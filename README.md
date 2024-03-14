@@ -1,10 +1,13 @@
 # Git Docs & Notes <!-- omit from toc -->
 
-This document is reference guide about the common Git commands to be run from a terminal. GitHub is taken as an example of remote repository.
+This document is a reference guide for the common Git commands run from a terminal. GitHub is taken as an example of remote repository.
 
 ## Table of contents <!-- omit from toc -->
 
 - [Introduction](#introduction)
+  - [Code organization](#code-organization)
+  - [Git repositories](#git-repositories)
+  - [Git architecture](#git-architecture)
 - [Install](#install)
   - [Linux](#linux)
   - [macOS](#macos)
@@ -37,7 +40,9 @@ This document is reference guide about the common Git commands to be run from a 
 
 ## Introduction
 
-Version control systems (VCS) are used to log your changes while you progress in your coding. Similarly to other VCS, Git organizes the code in:
+Version control systems (VCS) are used to log your changes while you progress in your coding.
+
+### Code organization
 
 1. **Main branch** is where your current stable production code is located. It only includes tested and unbroken code. It acts as a base from where all changes are made.
 
@@ -45,13 +50,21 @@ Version control systems (VCS) are used to log your changes while you progress in
 
 3. **Tags** mark releases of your code.
 
-A repository contains all the files of your project. Unlike fully centralized versioning systems, Git utilizes a central repository and a series of local repositories. Those local repositories are an exact copy of the central repository and they include the complete history of changes. The central repository is only needed to synchronize the repositories, in fact, it's possible to run a single local repository without a central repository.
+### Git repositories
 
-As opposed to other VCS, Git has an intermediate **Staging Area** where you put the files to be committed without having to include every change from the **Working Tree**. 
+A repository contains all the files of a project including the history of changes. Unlike fully centralized versioning systems, Git utilizes a central repository and a series of local repositories. Those local repositories are an exact copy of the central repository with the complete history of changes. The central repository is only needed to synchronize the repositories, in fact, it's possible to run a single local repository without a central repository.
 
-The logical structure of the various Git components can be visualized like:
+### Git architecture
 
-TODO: add figure
+1. **Working Tree** is the location where your repository has been checked out. Some call it Working Directory but that can easily be confused with the Current Directory your are in with your terminal.
+   
+2. **Staging Area** is where you put the files to be committed without having to include every change from the **Working Tree**. Some call it Index because it is implemented as a binary index file inside the `.git` directory.
+
+3. **Local Repository** is where your commits, branches, tags and log messages are stored. It is located inside the `.git` directory.
+
+4. **Remote Repository** (or Central Repository) is synchronized with your Local Repository. They usually communicate through a secure network connection.
+
+![Git Overview](figures/git-architecture.svg)
 
 
 ## Install
