@@ -47,7 +47,7 @@ Version control systems (VCS) are used to log your changes while you progress in
 
 A repository contains all the files of your project. Unlike fully centralized versioning systems, Git utilizes a central repository and a series of local repositories. Those local repositories are an exact copy of the central repository and they include the complete history of changes. The central repository is only needed to synchronize the repositories, in fact, it's possible to run a single local repository without a central repository.
 
-As opposed to other VCS, Git has an intermediate **Staging Area** where you put the files to be committed without having to include every change from the **Working Directory**. 
+As opposed to other VCS, Git has an intermediate **Staging Area** where you put the files to be committed without having to include every change from the **Working Tree**. 
 
 The logical structure of the various Git components can be visualized like:
 
@@ -189,7 +189,7 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
 
   Attention: avoid `git add *` because .gitignore is not taken into account and files beginning with a dot are not added.
 
-- Add all files in the entire Working Directory:
+- Add all files in the entire Working Tree:
 
   ```
   git add -A
@@ -267,7 +267,7 @@ Hint: exit the pager by pressing the `q` key.
 
 If no `<filename>` is provided the command will show changes for all files.
 
-- Staging Area vs Working Directory:
+- Staging Area vs Working Tree:
 
   ```
   git diff <filename>
@@ -275,7 +275,7 @@ If no `<filename>` is provided the command will show changes for all files.
 
   Remember: if a file is not staged, then the Staging Area contains the file's last commit.
 
-- `<CommitID>` vs Working Directory:
+- `<CommitID>` vs Working Tree:
 
   ```
   git diff <CommitID> <filename>
@@ -298,7 +298,7 @@ Hint: exit the pager by pressing the `q` key.
 
 ### Rename files/directories
 
-Stage for rename and rename in Working Directory (can be undo):
+Stage for rename and rename in Working Tree (can be undo):
 
 ```
 git mv <oldname> <newname>
@@ -307,7 +307,7 @@ git mv <oldname> <newname>
 
 ### Remove files
 
-- Stage for removal and delete from Working Directory (can be undo):
+- Stage for removal and delete from Working Tree (can be undo):
 
   ```
   git rm <filename>
@@ -340,7 +340,7 @@ git mv <oldname> <newname>
 
   (legacy command `git reset <filename>`)
 
-- Revert Working Directory by taking it from Staging Area:
+- Revert Working Tree by taking it from Staging Area:
   
   ```
   git restore <filename>
@@ -348,7 +348,7 @@ git mv <oldname> <newname>
 
   (legacy command `git checkout <filename>`)
 
-- Revert Working Directory and Staging Area by taking it from given source:
+- Revert Working Tree and Staging Area by taking it from given source:
 
   ```
   git restore -s <CommitID> --staged --worktree <filename>
@@ -359,7 +359,7 @@ git mv <oldname> <newname>
 
 ### Branch
 
-When switching branch, the Working Directory is updated, but uncommitted changes 
+When switching branch, the Working Tree is updated, but uncommitted changes 
 are not touched!
 
 - List:
@@ -552,7 +552,7 @@ If you have many tags to push, then when pushing your commits, use one of the fo
 
 ### Pull or Fetch+Merge
 
-A fetch updates your local repository with all of the latest changes from a remote repository (including tags), but it does not make any changes to your working directory.
+A fetch updates your local repository with all of the latest changes from a remote repository (including tags), but it does not make any changes to your Working Tree.
 
 The merge command incorporates changes from the remote branch into the local branch. It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done do commit them.
 
