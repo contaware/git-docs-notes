@@ -382,6 +382,7 @@ are not touched!
   ```
 
   - `-v` to be more verbose
+  - `-vv` really verbose, it shows the default remote branch 
   - `-a` to see also the remote-tracking branches
 
 - Create:
@@ -417,6 +418,15 @@ are not touched!
   ```
   git branch -m <oldbranchname> <newbranchname>
   ```
+
+- Set default remote branch:
+
+  ```
+  git branch -u <remotename>/<remotebranchname> <localbranchname>
+  ```
+
+  Note: that's done automatically by a `git clone` or when using `-u` with `git push`.
+
 
 ### Tags
 
@@ -549,10 +559,10 @@ If someone else pushes its code and then you try to push as well, your push will
 - Update the remote repository with your local changes:
 
   ```
-  git push <remotename> main
+  git push <remotename> <localbranchname>
   ```
-
-  Note: main refers to the local branch.
+  
+  If the local repository was not created by a `git clone` and the remote branch does not exist, then with your first push provide the `-u` option. That will configure the tracking information associating the remote branch to your local branch.
 
 - Tags have to be pushed explicitly:
 
@@ -572,17 +582,15 @@ The merge command incorporates changes from the remote branch into the local bra
 - Download content from a remote repository and update the local repository:
 
   ```
-  git pull <remotename> main
+  git pull <remotename> <remotebranchname>
   ```
 
 - Equivalent to:
 
   ```
-  git fetch <remotename> main
-  git merge <remotename>/main
+  git fetch <remotename> <remotebranchname>
+  git merge <remotename>/<remotebranchname>
   ```
-
-Note: main refers to the remote branch.
 
 
 ## Work with GitHub
