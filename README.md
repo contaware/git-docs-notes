@@ -434,6 +434,12 @@ are not touched!
 
   Note: that's done automatically by a `git clone` or when using `-u` with `git push`.
 
+- Unset default remote branch:
+
+  ```
+  git branch --unset-upstream <branchname>
+  ```
+
 
 ### Tags
 
