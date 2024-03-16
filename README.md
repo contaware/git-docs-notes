@@ -588,11 +588,7 @@ If you have many tags to push, then when pushing your commits, use one of the fo
 
 ### Pull or Fetch+Merge
 
-A fetch updates your local repository with all of the latest changes from a remote repository (including tags), but it does not make any changes to your Working Tree.
-
-The merge command incorporates changes from the remote branch into the local branch. It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done do commit them.
-
-- Download content from a remote repository and update the local repository:
+- Download content from the given remote branch and update the current branch:
 
   ```
   git pull <remotename> <remotebranchname>
@@ -605,7 +601,11 @@ The merge command incorporates changes from the remote branch into the local bra
   git merge <remotename>/<remotebranchname>
   ```
 
-Hint: after deleting a branch from a remote interface like GitHub, call `git pull` or `git fetch` with the `-p` prune option to remove any remote-tracking references that no longer exist on the remote.
+The fetch updates your local repository with all of the latest changes from the remote repository (including tags), but it does not make any changes to your Working Tree.
+
+The merge command incorporates changes from the given remote branch into the current branch. It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done do commit them.
+
+Hint: after deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove any remote-tracking references that no longer exist on the remote.
 
 
 ## Work with GitHub
