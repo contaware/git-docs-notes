@@ -599,6 +599,8 @@ The merge command incorporates changes from the remote branch into the local bra
   git merge <remotename>/<remotebranchname>
   ```
 
+Hint: after deleting a branch from a remote interface like GitHub, call `git pull` or `git fetch` with the `-p` prune option to remove any remote-tracking references that no longer exist on the remote.
+
 
 ## Work with GitHub
 
