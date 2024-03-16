@@ -382,8 +382,9 @@ are not touched!
   ```
 
   - `-v` to be more verbose
-  - `-vv` really verbose, it shows the default remote branch 
-  - `-a` to see also the remote-tracking branches
+  - `-vv` really verbose, it shows the default remote branch
+  - `-r` to see the remote-tracking branches
+  - `-a` to see all branches
 
 - Create:
 
@@ -407,10 +408,16 @@ are not touched!
 
   (legacy command `git checkout <branchname>`)
 
-- Delete:
+- Delete local:
 
   ```
   git branch -d <branchname>
+  ```
+
+- Delete remote:
+
+  ```
+  git push -d <remotename> <remotebranchname>
   ```
 
 - Rename:
@@ -422,7 +429,7 @@ are not touched!
 - Set default remote branch:
 
   ```
-  git branch -u <remotename>/<remotebranchname> <localbranchname>
+  git branch -u <remotename>/<remotebranchname> <branchname>
   ```
 
   Note: that's done automatically by a `git clone` or when using `-u` with `git push`.
