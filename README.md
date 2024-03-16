@@ -639,8 +639,6 @@ The merge command incorporates changes from the remote branch into the local bra
    git push -u origin <branchname>
    ```
 
-   Note: with Git 2.37 or higher the `-u` set upstream option can be omitted.
-
 6. On GitHub go to the forked repository and create the pull request.
 
 
