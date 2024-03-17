@@ -372,8 +372,9 @@ git mv <oldname> <newname>
 
 ### Branch
 
-When switching branch, the Working Tree is updated, but uncommitted changes 
-are not touched!
+In addition to the local branches stored in your machine and the remote branches residing on a remote server, there is also the concept of a **remote-tracking branch**. This type of branches are locally stored references pointing to remote branches. They are named like `<remotename>/<remotebranchname>` and can be listed with `git branch -r`.
+
+The explicit association between a remote branch and a local branch is not mandatory, but comfortable when synchronizing, it avoids us typing the full commands with all the arguments. With `git config --list` we can see those **upstream tracking configurations** for all the local branches, they are `branch.<branchname>.remote` and `branch.<branchname>.merge`.
 
 - List:
 
@@ -382,7 +383,7 @@ are not touched!
   ```
 
   - `-v` to be more verbose
-  - `-vv` really verbose, it shows the default remote branch
+  - `-vv` really verbose, it shows upstream tracking configurations
   - `-r` to see the remote-tracking branches
   - `-a` to see all branches
 
@@ -400,6 +401,8 @@ are not touched!
 
   (legacy command `git checkout -b <branchname>`)
 
+  Note: when switching branch, the Working Tree is updated, but uncommitted changes are not touched.
+
 - Switch:
   
   ```
@@ -408,11 +411,15 @@ are not touched!
 
   (legacy command `git checkout <branchname>`)
 
+  Note: when switching branch, the Working Tree is updated, but uncommitted changes are not touched.
+
 - Delete local:
 
   ```
   git branch -d <branchname>
   ```
+
+  Note: that will also remove the upstream tracking configurations for the given `<branchname>`.
 
 - Delete remote:
 
@@ -420,7 +427,7 @@ are not touched!
   git push -d <remotename> <remotebranchname>
   ```
 
-  Hint: if deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove the branch's remote-tracking reference.
+  Hint: `git fetch` with the `-p` prune option has to be called to remove the remote-tracking branch if you didn't execute the above command but instead deleted the remote branch from inside a remote interface such as GitHub.
 
 - Rename:
 
@@ -428,7 +435,7 @@ are not touched!
   git branch -m <oldbranchname> <newbranchname>
   ```
 
-- Set default remote branch:
+- Set upstream tracking configurations:
 
   ```
   git branch -u <remotename>/<remotebranchname> <branchname>
@@ -436,7 +443,7 @@ are not touched!
 
   Note: that's done automatically by a `git clone` or when using `-u` with `git push`.
 
-- Unset default remote branch:
+- Unset upstream tracking configurations:
 
   ```
   git branch --unset-upstream <branchname>
@@ -571,13 +578,16 @@ A push is used to upload local repository content to a remote repository.
 
 If someone else pushes its code and then you try to push as well, your push will rightly be rejected. You need to first do a pull and after that retry your push.
 
-- Update the remote repository with your local changes:
+- Update the remote branch with the changes of your local branch:
 
   ```
-  git push <remotename> <localbranchname>
+  git push [<remotename> [<localbranchname>]]
   ```
   
-  If the local repository was not created by a `git clone` and the remote branch does not exist, then with your first push provide the `-u` option. That will configure the tracking information associating the remote branch to your local branch.
+  - The local branch is pushed to the remote branch having the same name.
+  - If the local repository was not created by a `git clone` and the local branch has never been pushed, then with your first push provide the `-u` option to set the [upstream tracking configurations](#branch).
+  - When omitting `<localbranchname>`, then the current branch is pushed to the remote branch with the same name, but only if the [upstream tracking configurations](#branch) have also the same two corresponding names set.
+  - If `<remotename>` is not provided, then it pushes to the remote set by the [upstream tracking configurations](#branch).
 
 - Tags have to be pushed explicitly:
 
@@ -585,7 +595,7 @@ If someone else pushes its code and then you try to push as well, your push will
   git push <remotename> <tagname>
   ```
 
-If you have many tags to push, then when pushing your commits, use one of the following two options. The `--follow-tags` option pushes all annotated tags and the `--tags` option pushes all tags (not recommended).
+  If you have many tags to push, then when pushing your commits, use one of the following two options. The `--follow-tags` option pushes all annotated tags and the `--tags` option pushes all tags (not recommended).
 
 
 ### Pull or Fetch+Merge
