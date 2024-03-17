@@ -420,6 +420,8 @@ are not touched!
   git push -d <remotename> <remotebranchname>
   ```
 
+  Hint: if deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove the branch's remote-tracking references.
+
 - Rename:
 
   ```
@@ -604,8 +606,6 @@ If you have many tags to push, then when pushing your commits, use one of the fo
 The fetch updates your local repository with all of the latest changes from the remote repository (including tags), but it does not make any changes to your Working Tree.
 
 The merge command incorporates changes from the given remote branch into the current branch. It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done do commit them.
-
-Hint: after deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove any remote-tracking references that no longer exist on the remote.
 
 
 ## Work with GitHub
