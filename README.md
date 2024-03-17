@@ -420,7 +420,7 @@ are not touched!
   git push -d <remotename> <remotebranchname>
   ```
 
-  Hint: if deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove the branch's remote-tracking references.
+  Hint: if deleting a branch from a remote interface like GitHub, call `git fetch` with the `-p` prune option to remove the branch's remote-tracking reference.
 
 - Rename:
 
