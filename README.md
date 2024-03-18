@@ -608,7 +608,7 @@ Fetch remote branch (including tags) and update the remote-tracking branch:
 git fetch [<remotename> [<remotebranchname>]]
 ```
 
-- If `<remotebranchname>` is omitted, then all branches from <remotename> are fetched.
+- If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
 - If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
 
 
