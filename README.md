@@ -31,7 +31,9 @@ This document is a reference guide for the common Git commands run from a termin
   - [Remote repository connections](#remote-repository-connections)
   - [Clone](#clone)
   - [Push](#push)
-  - [Pull or Fetch+Merge](#pull-or-fetchmerge)
+  - [Fetch](#fetch)
+  - [Merge](#merge)
+  - [Pull](#pull)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
@@ -598,24 +600,46 @@ If someone else pushes its code and then you try to push as well, your push will
   If you have many tags to push, then when pushing your commits, use one of the following two options. The `--follow-tags` option pushes all annotated tags and the `--tags` option pushes all tags (not recommended).
 
 
-### Pull or Fetch+Merge
+### Fetch
+
+Fetch remote branch (including tags) and update the remote-tracking branch:
+
+```
+git fetch [<remotename> [<remotebranchname>]]
+```
+
+- If `<remotebranchname>` is omitted, then all branches from <remotename> are fetched.
+- If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
+
+
+### Merge
+
+Incorporate changes from the given branch into the current branch:
+
+```
+git merge [<branchname>]
+```
+
+- If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+- It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done, commit them.
+
+
+### Pull
 
 - Download content from the given remote branch and update the current branch:
 
   ```
-  git pull <remotename> <remotebranchname>
+  git pull [<remotename> [<remotebranchname>]]
   ```
 
-- Equivalent to:
+  - Default values for `<remotename>` and `<remotebranchname>` are read from the current branch's [upstream tracking configurations](#branch).
+
+- The above pull can be seen as:
 
   ```
   git fetch <remotename> <remotebranchname>
   git merge <remotename>/<remotebranchname>
   ```
-
-The fetch updates your local repository with all of the latest changes from the remote repository (including tags), but it does not make any changes to your Working Tree.
-
-The merge command incorporates changes from the given remote branch into the current branch. It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done do commit them.
 
 
 ## Work with GitHub
