@@ -164,8 +164,10 @@ git config --list
 ### Init a repository
 
 ```
-git init 
+git init
 ```
+
+After a `git init` both `git status` and `git branch --show-current` tell us that we are on `main` branch, but `git branch` returns nothing. That's so because a **branch is a pointer to a commit** and `git branch` only lists branches pointing to somewhere. The necessity of this empty current branch is obvious when we take the `git merge` command and remember that it requires a current branch to merge into.
 
 
 ### Status
