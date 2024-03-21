@@ -270,6 +270,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - `-n` shows the last n commits
   - `--oneline` displays in one-liners
+  - `--graph` displays a text-based graph in topological order
 
 - Show information about the given `<CommitID>`:
 
