@@ -262,7 +262,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
 ### Log
 
-- Show commits from HEAD following the parents; limit to `<filename>` if provided:
+- Show commits from `HEAD` following the parents; limit to `<filename>` if provided:
 
   ```
   git log [<filename>]
