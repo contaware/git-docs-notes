@@ -218,6 +218,12 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
   git add -u
   ```
 
+- Interactive add by hunks (=area where the file changed):
+
+  ```
+  git add -p <filename>
+  ```
+
 
 ### Ignore files
 
