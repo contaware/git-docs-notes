@@ -262,10 +262,10 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
 ### Log
 
-- Show the history for the given `<filename>`, or for all files if not provided:
+- Show commits from HEAD following the parents; limit to `<filename>` if provided:
 
   ```
-  git log <filename>
+  git log [<filename>]
   ```
 
   - `-n` shows the last n commits
