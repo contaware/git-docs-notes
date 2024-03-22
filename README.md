@@ -507,10 +507,10 @@ Tags do reference specific commits. There are annotated tags which store more in
 - To "re-attach" the HEAD, just switch back to a branch:
 
   ```
-  git switch main
+  git switch <branchname>
   ```
 
-  (legacy command `git checkout main`)
+  (legacy command `git checkout <branchname>`)
 
 - In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete those commits. To avoid the removal of the commits generated in the detached state, create a branch and switch to it:
 
