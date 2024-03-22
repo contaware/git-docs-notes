@@ -623,15 +623,23 @@ git fetch [<remotename> [<remotebranchname>]]
 
 ### Merge
 
-Incorporate changes from the given branch into the current branch:
+- Incorporate changes from the given branch into the current branch:
 
-```
-git merge [<branchname>]
-```
+  ```
+  git merge [<branchname>]
+  ```
 
-- If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-- It will try to auto merge, if it fails, it will annotate your text files with the differences. You have to review the annotated files and when done, commit them.
+  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
+ 
+- Interrupt a merge process and try to reconstruct the pre-merge state:
 
+  ```
+  git merge --abort
+  ```
+
+Merge will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
+ 
 
 ### Pull
 
