@@ -224,6 +224,8 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
   git add -p <filename>
   ```
 
+Hint: Git tracks files, not directories. To track an empty directory (that contains no files) create an empty `.placeholder` file in it.
+
 
 ### Ignore files
 
