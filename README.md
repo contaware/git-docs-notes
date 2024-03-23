@@ -596,12 +596,20 @@ If someone else pushes its code and then you try to push as well, your push will
 
   - Default values for `<remotename>` and `<remotebranchname>` are read from the current branch's [upstream tracking configurations](#branch).
 
-- The above pull can be seen as:
+- A pull is a combination of two commands:
 
   ```
   git fetch <remotename> <remotebranchname>
+  ```
+  and
+  ```
   git merge <remotename>/<remotebranchname>
   ```
+  or with pull's `--rebase` option a rebase is performed instead of the merge:
+  ```
+  git rebase <remotename>/<remotebranchname>
+  ```
+
 
 ## Advanced Use
 
