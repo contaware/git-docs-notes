@@ -27,7 +27,6 @@ This document is a reference guide for the common Git commands run from a termin
   - [Restore files](#restore-files)
   - [Branch](#branch)
   - [Tags](#tags)
-  - [Switch to a commit/tag](#switch-to-a-committag)
   - [Remote repository connections](#remote-repository-connections)
   - [Clone](#clone)
   - [Push](#push)
@@ -35,6 +34,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Merge](#merge)
   - [Pull](#pull)
 - [Advanced Use](#advanced-use)
+  - [Switch to a commit/tag](#switch-to-a-committag)
   - [Rebase](#rebase)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
@@ -498,33 +498,6 @@ Tags do reference specific commits. There are annotated tags which store more in
   ```
 
 
-### Switch to a commit/tag
-
-- Normally HEAD is a pointer to a branch which by itself refers to its latest commit. When HEAD directly points to a commit, it gets detached from all branches:
-
-  ```
-  git switch -d <CommitID>
-  ```
-
-  (legacy command `git checkout <CommitID>`)
-
-- To "re-attach" the HEAD, just switch back to a branch:
-
-  ```
-  git switch <branchname>
-  ```
-
-  (legacy command `git checkout <branchname>`)
-
-- In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete those commits. To avoid the removal of the commits generated in the detached state, create a branch and switch to it:
-
-  ```
-  git switch -c <branchname>
-  ```
-
-  (legacy command `git checkout -b <branchname>`)
-
-
 ### Remote repository connections
 
 - Add:
@@ -663,6 +636,33 @@ Merge will try to auto merge, if it fails, it will annotate your text files with
   ```
 
 ## Advanced Use
+
+### Switch to a commit/tag
+
+- Normally HEAD is a pointer to a branch which by itself refers to its latest commit. When HEAD directly points to a commit, it gets detached from all branches:
+
+  ```
+  git switch -d <CommitID>
+  ```
+
+  (legacy command `git checkout <CommitID>`)
+
+- To "re-attach" the HEAD, just switch back to a branch:
+
+  ```
+  git switch <branchname>
+  ```
+
+  (legacy command `git checkout <branchname>`)
+
+- In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete those commits. To avoid the removal of the commits generated in the detached state, create a branch and switch to it:
+
+  ```
+  git switch -c <branchname>
+  ```
+
+  (legacy command `git checkout -b <branchname>`)
+
 
 ### Rebase
 
