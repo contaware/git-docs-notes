@@ -653,6 +653,7 @@ git fetch [<remotename> [<remotebranchname>]]
   ```
 
   - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+  - This command will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
   - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
  
 - Interrupt a merge process and try to reconstruct the pre-merge state:
@@ -661,14 +662,12 @@ git fetch [<remotename> [<remotebranchname>]]
   git merge --abort
   ```
 
-Merge will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
-
 ![Git Merge](figures/git-merge.svg)
 
 
 ### Rebase
 
-Never rebase commits that exist outside your local repository and that people may have based work on. You can rebase your local development branch with the main branch to permit a fast-forward merge.
+Rebase does **change commit hashes**, so never rebase commits that exist outside your local repository and that people may have based work on. You usually rebase your local development branch with the main branch to permit a fast-forward merge.
 
 - Rebase the current branch so that it begins on the tip of the given branch:
 
@@ -678,15 +677,13 @@ Never rebase commits that exist outside your local repository and that people ma
 
   - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
   - This operation works by going to the common ancestor of the two branches, getting the diffs introduced by each commit of the current branch, saving those diffs to temporary files, resetting the current branch on the tip of the given branch, and finally applying each change in turn.
-  - Each commit from the current branch gets a new commit hash.
+  - At each commit rewrite step, Git checks for merge conflicts. When there are conflicts, review the annotated files, `git add` them and continue with `git rebase --continue`.
 
 - Interrupt a rebase process and try to reconstruct the pre-rebase state:
 
   ```
   git rebase --abort
   ```
-
-At each commit rewrite step, Git checks for merge conflicts. When there are conflicts, review the annotated files, `git add` them and continue with `git rebase --continue`.
 
 ![Git Rebase](figures/git-rebase.svg)
 
