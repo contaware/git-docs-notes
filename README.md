@@ -663,6 +663,8 @@ git fetch [<remotename> [<remotebranchname>]]
 
 Merge will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
 
+![Git Merge](figures/git-merge.svg)
+
 
 ### Rebase
 
@@ -685,6 +687,8 @@ Never rebase commits that exist outside your local repository and that people ma
   ```
 
 At each commit rewrite step, Git checks for merge conflicts. When there are conflicts, review the annotated files, `git add` them and continue with `git rebase --continue`.
+
+![Git Rebase](figures/git-rebase.svg)
 
 
 ## Work with GitHub
