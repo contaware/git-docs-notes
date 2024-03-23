@@ -34,6 +34,8 @@ This document is a reference guide for the common Git commands run from a termin
   - [Fetch](#fetch)
   - [Merge](#merge)
   - [Pull](#pull)
+- [Advanced Use](#advanced-use)
+  - [Rebase](#rebase)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
@@ -659,6 +661,30 @@ Merge will try to auto merge, if it fails, it will annotate your text files with
   git fetch <remotename> <remotebranchname>
   git merge <remotename>/<remotebranchname>
   ```
+
+## Advanced Use
+
+### Rebase
+
+Never rebase commits that exist outside your local repository and that people may have based work on. You can rebase your local development branch with the main branch to permit a fast-forward merge.
+
+- Rebase the current branch so that it begins on the tip of the given branch:
+
+  ```
+  git rebase [<branchname>]
+  ```
+
+  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+  - This operation works by going to the common ancestor of the two branches, getting the diffs introduced by each commit of the current branch, saving those diffs to temporary files, resetting the current branch on the tip of the given branch, and finally applying each change in turn.
+  - Each commit from the current branch gets a new commit hash.
+
+- Interrupt a rebase process and try to reconstruct the pre-rebase state:
+
+  ```
+  git rebase --abort
+  ```
+
+At each commit rewrite step, Git checks for merge conflicts. When there are conflicts, review the annotated files, `git add` them and continue with `git rebase --continue`.
 
 
 ## Work with GitHub
