@@ -39,7 +39,7 @@ This document is a reference guide for the common Git commands run from a termin
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
-  - [Update fork](#update-fork)
+  - [Update a fork](#update-a-fork)
 
 
 ## Introduction
@@ -736,7 +736,7 @@ At each commit rewrite step, Git checks for merge conflicts. When there are conf
 6. On GitHub go to the forked repository and create the pull request.
 
 
-### Update fork
+### Update a fork
 
 After a while the repository of the other person may have changed, before doing another PR, it's important to update your fork. By convention the connection alias of the original repository is named `upstream`. 
 
