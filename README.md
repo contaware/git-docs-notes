@@ -30,11 +30,11 @@ This document is a reference guide for the common Git commands run from a termin
   - [Remote repository connections](#remote-repository-connections)
   - [Clone](#clone)
   - [Push](#push)
-  - [Fetch](#fetch)
-  - [Merge](#merge)
   - [Pull](#pull)
 - [Advanced Use](#advanced-use)
   - [Switch to a commit/tag](#switch-to-a-committag)
+  - [Fetch](#fetch)
+  - [Merge](#merge)
   - [Rebase](#rebase)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
@@ -586,38 +586,6 @@ If someone else pushes its code and then you try to push as well, your push will
   If you have many tags to push, then when pushing your commits, use one of the following two options. The `--follow-tags` option pushes all annotated tags and the `--tags` option pushes all tags (not recommended).
 
 
-### Fetch
-
-Fetch remote branch (including tags) and update the remote-tracking branch:
-
-```
-git fetch [<remotename> [<remotebranchname>]]
-```
-
-- If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
-- If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
-
-
-### Merge
-
-- Incorporate changes from the given branch into the current branch:
-
-  ```
-  git merge [<branchname>]
-  ```
-
-  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
- 
-- Interrupt a merge process and try to reconstruct the pre-merge state:
-
-  ```
-  git merge --abort
-  ```
-
-Merge will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
- 
-
 ### Pull
 
 - Download content from the given remote branch and update the current branch:
@@ -662,6 +630,38 @@ Merge will try to auto merge, if it fails, it will annotate your text files with
   ```
 
   (legacy command `git checkout -b <branchname>`)
+
+
+### Fetch
+
+Fetch remote branch (including tags) and update the remote-tracking branch:
+
+```
+git fetch [<remotename> [<remotebranchname>]]
+```
+
+- If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
+- If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
+
+
+### Merge
+
+- Incorporate changes from the given branch into the current branch:
+
+  ```
+  git merge [<branchname>]
+  ```
+
+  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
+ 
+- Interrupt a merge process and try to reconstruct the pre-merge state:
+
+  ```
+  git merge --abort
+  ```
+
+Merge will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
 
 
 ### Rebase
