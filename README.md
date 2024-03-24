@@ -400,15 +400,13 @@ The explicit association between a remote branch and a local branch is not manda
   git branch <branchname>
   ```
 
-- Create and switch to it:
+- Create and switch to it (uncommitted changes are not touched):
 
   ```
   git switch -c <branchname>
   ```
 
   (legacy command `git checkout -b <branchname>`)
-
-  Note: when switching branch, the Working Tree is updated, but uncommitted changes are not touched.
 
 - Switch:
   
@@ -417,8 +415,6 @@ The explicit association between a remote branch and a local branch is not manda
   ```
 
   (legacy command `git checkout <branchname>`)
-
-  Note: when switching branch, the Working Tree is updated, but uncommitted changes are not touched.
 
 - Delete local:
 
