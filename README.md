@@ -289,32 +289,28 @@ Hint: exit the pager by pressing the `q` key.
 
 ### Diff
 
-If no `<filename>` is provided the command will show changes for all files.
-
-- Staging Area vs Working Tree:
-
-  ```
-  git diff <filename>
-  ```
-
-  Remember: if a file is not staged, then the Staging Area contains the file's last commit.
+If no `<filename>` is provided the command will show changes for all files. If a file is not staged, then the Staging Area contains the file's last commit.
 
 - `<CommitID>` vs Working Tree:
 
   ```
-  git diff <CommitID> <filename>
+  git diff [<CommitID>] [<filename>]
   ```
+
+  - If `<CommitID>` is not provided it **defaults** to the **Staging Area**.
 
 - `<CommitID>` vs Staging Area:
 
   ```
-  git diff --staged <CommitID> <filename>
+  git diff --staged [<CommitID>] [<filename>]
   ```
+
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
 - `<CommitID1>` vs `<CommitID2>`:
 
   ```
-  git diff <CommitID1>..<CommitID2> <filename>
+  git diff <CommitID1>..<CommitID2> [<filename>]
   ```
 
 Hint: exit the pager by pressing the `q` key.
