@@ -194,6 +194,8 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
 
 ### Add files
 
+In a Working Tree there are two kinds of files, the **tracked** files which Git knows and the **untracked** files that Git does not know.
+
 - Add given file(s) to the Staging Area:
 
   ```
