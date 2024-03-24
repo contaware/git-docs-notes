@@ -210,12 +210,6 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
 
   Attention: avoid `git add *` because .gitignore is not taken into account and files beginning with a dot are not added.
 
-- Add all files in the entire Working Tree:
-
-  ```
-  git add -A
-  ```
-
 - Add all tracked files that have been modified or deleted:
 
   ```
