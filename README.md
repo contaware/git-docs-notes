@@ -242,8 +242,10 @@ Note: if any of the ignored files were already being tracked, Git would continue
 - Commit staged files:
 
   ```
-  git commit -m "msg"
+  git commit
   ```
+  - Git launches the [configured](#config) editor to write your message. A good commit message has a subject line with the first letter capitalized and not ending with a period. If a description is needed, separate it from the subject with a blank line and wrap it at 72 characters.
+  - To quickly add a message use the `-m "msg"` option.
 
 - Stage and commit all tracked files that have been modified or deleted:
 
@@ -261,9 +263,7 @@ Note: if any of the ignored files were already being tracked, Git would continue
 
   Attention: it works by removing your last commit and creating a new one. If you already pushed your work to a shared remote repository and others have built on your last commit, do not amend!
 
-Note: without the `-m` option, Git launches the [configured](#config) editor to write/edit your message.
-
-After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. There is also `HEAD` that points to a branch which refers to its latest commit. Appending a tilde with a number means to go back by the given amount of generations, so `HEAD~1` refers to the 2nd most recent commit and `HEAD~2` is the 3rd most recent one.
+After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. In a local repository `HEAD` points to the currently checked-out branch or commit when in [detached HEAD state](#switch-to-a-committag). A branch always refers to its latest commit. Appending a tilde with a number means to go back by the given amount of generations, so `HEAD~1` refers to the 2nd most recent commit and `HEAD~2` is the 3rd most recent one.
 
 
 ### Log
