@@ -604,7 +604,7 @@ If someone else pushes its code and then you try to push as well, your push will
 
 ### Stash
 
-The stash command saves your current local changes and goes back to a clean state.
+The stash command saves your current local changes and goes back to a clean state. If we switch to another branch, our stash will remain the same. This means that stashing can be used to carry changes through different branches.
 
 The stash is organized as a stack. The items are accessed by `stash@{n}` with `n=0` being the latest added one. When `stash@{n}` is not provided it defaults to `stash@{0}`. When applying a stash item, Git tries to auto-merge and on conflicts it will prompt to solve.
 
