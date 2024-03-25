@@ -32,6 +32,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Push](#push)
   - [Pull](#pull)
 - [Advanced Use](#advanced-use)
+  - [Stash](#stash)
   - [Switch to a commit/tag](#switch-to-a-committag)
   - [Fetch](#fetch)
   - [Merge](#merge)
@@ -601,6 +602,49 @@ If someone else pushes its code and then you try to push as well, your push will
 
 ## Advanced Use
 
+### Stash
+
+The stash command saves your current local changes and goes back to a clean state.
+
+The stash is organized as a stack. The items are accessed by `stash@{n}` with `n=0` being the latest added one. When `stash@{n}` is not provided it defaults to `stash@{0}`. When applying a stash item, Git tries to auto-merge and on conflicts it will prompt to solve.
+
+- Stash Working Tree and Staging Area:
+
+  ```
+  git stash -m "msg"
+  ```
+
+- Stash Staging Area only, Working Tree is not touched:
+
+  ```
+  git stash --staged -m "msg"
+  ```
+
+- List the stash entries that you currently have:
+
+  ```
+  git stash list
+  ```
+
+- Apply the given stash entry and remove it:
+  
+  ```
+  git stash pop [stash@{n}]
+  ```
+
+- Apply the given stash entry:
+
+  ```
+  git stash apply [stash@{n}]
+  ```
+
+- Remove the given stash entry:
+
+  ```
+  git stash drop [stash@{n}]
+  ```
+
+
 ### Switch to a commit/tag
 
 - Normally HEAD is a pointer to a branch which by itself refers to its latest commit. When HEAD directly points to a commit, it gets detached from all branches:
@@ -649,7 +693,7 @@ git fetch [<remotename> [<remotebranchname>]]
   ```
 
   - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-  - This command will try to auto merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
+  - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
   - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
  
 - Interrupt a merge process and try to reconstruct the pre-merge state:
