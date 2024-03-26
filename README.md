@@ -707,17 +707,18 @@ git fetch [<remotename> [<remotebranchname>]]
 
 ### Rebase
 
-Rebase does **change commit hashes**, so never rebase commits that exist outside your local repository and that people may have based work on. You usually rebase your local development branch with the main branch to permit a fast-forward merge.
+Rebase does **change commit hashes**, so never rebase commits that exist outside your local repository and that people may have based work on. In detail rebase is going to the common ancestor of the current branch and the given commit, getting the diffs introduced by each commit of the current branch, saving those diffs to temporary files, resetting the current branch to the given commit, and finally applying each change in turn.
 
-- Rebase the current branch so that it begins on the tip of the given branch:
+- Rebase the current branch on the given commit:
 
   ```
-  git rebase [<branchname>]
+  git rebase [<CommitID>]
   ```
 
-  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-  - This operation works by going to the common ancestor of the two branches, getting the diffs introduced by each commit of the current branch, saving those diffs to temporary files, resetting the current branch on the tip of the given branch, and finally applying each change in turn.
+  - If `<CommitID>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
   - At each commit rewrite step, Git checks for merge conflicts. When there are conflicts, review the annotated files, `git add` them and continue with `git rebase --continue`.
+  - The `-i` option opens a file where all commits are listed, with the leading command you decide the fate of each commit. To re-order the commits move them in the list, to change the commit messages use **reword**, **squash** is to meld into the previous listed commit and **drop** is self-explanatory.
+  - By default a rebase will put the rebased commits into a single linear branch. With `--rebase-merges` the branching structure is preserved.
 
 - Interrupt a rebase process and try to reconstruct the pre-rebase state:
 
