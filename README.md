@@ -36,8 +36,10 @@ This document is a reference guide for the common Git commands run from a termin
   - [Switch to a commit/tag](#switch-to-a-committag)
   - [Fetch](#fetch)
   - [Merge](#merge)
+- [Use with care](#use-with-care)
+  - [Amend](#amend)
   - [Rebase](#rebase)
-  - [Reset and reflog](#reset-and-reflog)
+  - [Reset](#reset)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
@@ -254,16 +256,6 @@ Note: if any of the ignored files were already being tracked, Git would continue
   ```
   git commit -a
   ```
-
-- Edit last commit (commit message can also be changed):
-
-  ```
-  git add <correctfile>
-  git rm <wrongfile>
-  git commit --amend
-  ```
-
-  Attention: it works by removing your last commit and creating a new one. If you already pushed your work to a shared remote repository and others have built on your last commit, do not amend!
 
 After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. In a local repository `HEAD` points to the currently checked-out branch or commit when in [detached HEAD state](#switch-to-a-committag). A branch always refers to its latest commit. Appending a tilde with a number means to go back by the given amount of generations, so `HEAD~1` refers to the 2nd most recent commit and `HEAD~2` is the 3rd most recent one.
 
@@ -706,9 +698,34 @@ git fetch [<remotename> [<remotebranchname>]]
 ![Git Merge](figures/git-merge.svg)
 
 
+## Use with care
+
+The commands in this section will **delete commits** and **replace commits**, so never use them on commits that already exist outside your local repository and that people may have based work on.
+
+
+### Amend
+
+Edit last commit:
+
+```
+git add <correctfile>
+git rm <wrongfile>
+git commit --amend
+```
+
+- The editor will open to let you change the commit message.
+- It removes your last commit and replaces it with a new one having a different hash.
+
+
 ### Rebase
 
-Rebase does **change commit hashes**, so never rebase commits that exist outside your local repository and that people may have based work on. In detail rebase is going to the common ancestor of the current branch and the given commit, getting the diffs introduced by each commit of the current branch, saving those diffs to temporary files, resetting the current branch to the given commit, and finally applying each change in turn.
+> A rebase command executes the following steps:
+> 
+> 1. Goes to the common ancestor of the current branch and the given commit.
+> 2. Gets the diffs introduced by each commit of the current branch.
+> 3. Saves those diffs to temporary files.
+> 4. Resets the current branch to the given commit.
+> 5. Finally applies each change in turn.
 
 - Rebase the current branch on the given commit:
 
@@ -730,11 +747,11 @@ Rebase does **change commit hashes**, so never rebase commits that exist outside
 ![Git Rebase](figures/git-rebase.svg)
 
 
-### Reset and reflog
+### Reset
 
 With the reset command we can drop commits or fix operations gone wrong like a rebase for example.
 
-- Show the branch and HEAD modifications log to find the **wanted commit**:
+- Show the branch and HEAD modifications log to find the wanted commit:
 
   ```
   git reflog
