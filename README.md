@@ -32,10 +32,10 @@ This document is a reference guide for the common Git commands run from a termin
   - [Push](#push)
   - [Pull](#pull)
 - [Advanced Use](#advanced-use)
-  - [Stash](#stash)
-  - [Switch to a commit/tag](#switch-to-a-committag)
   - [Fetch](#fetch)
   - [Merge](#merge)
+  - [Stash](#stash)
+  - [Switch to a commit/tag](#switch-to-a-committag)
 - [Use with care](#use-with-care)
   - [Amend](#amend)
   - [Rebase](#rebase)
@@ -595,6 +595,39 @@ If someone else pushes its code and then you try to push as well, your push will
 
 ## Advanced Use
 
+### Fetch
+
+Fetch remote branch (including tags) and update the remote-tracking branch:
+
+```
+git fetch [<remotename> [<remotebranchname>]]
+```
+
+- If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
+- If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
+
+
+### Merge
+
+- Incorporate changes from the given branch into the current branch:
+
+  ```
+  git merge [<branchname>]
+  ```
+
+  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
+  - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
+  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
+ 
+- Interrupt a merge process and try to reconstruct the pre-merge state:
+
+  ```
+  git merge --abort
+  ```
+
+![Git Merge](figures/git-merge.svg)
+
+
 ### Stash
 
 The stash command saves your current local changes and goes back to a clean state. If we switch to another branch, our stash will remain the same. This means that stashing can be used to carry changes through different branches.
@@ -663,39 +696,6 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   ```
 
   (legacy command `git checkout -b <branchname>`)
-
-
-### Fetch
-
-Fetch remote branch (including tags) and update the remote-tracking branch:
-
-```
-git fetch [<remotename> [<remotebranchname>]]
-```
-
-- If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
-- If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
-
-
-### Merge
-
-- Incorporate changes from the given branch into the current branch:
-
-  ```
-  git merge [<branchname>]
-  ```
-
-  - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-  - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
-  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
- 
-- Interrupt a merge process and try to reconstruct the pre-merge state:
-
-  ```
-  git merge --abort
-  ```
-
-![Git Merge](figures/git-merge.svg)
 
 
 ## Use with care
