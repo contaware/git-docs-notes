@@ -37,6 +37,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Fetch](#fetch)
   - [Merge](#merge)
   - [Rebase](#rebase)
+  - [Reset and reflog](#reset-and-reflog)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
@@ -727,6 +728,29 @@ Rebase does **change commit hashes**, so never rebase commits that exist outside
   ```
 
 ![Git Rebase](figures/git-rebase.svg)
+
+
+### Reset and reflog
+
+With the reset command we can drop commits or fix operations gone wrong like a rebase for example.
+
+- Show the branch and HEAD modifications log to find the **wanted commit**:
+
+  ```
+  git reflog
+  ```
+
+  - The most recent operations are listed at the top.
+  - The Git garbage collector keeps orphaned commits (local commits not accessible by a branch, tag or HEAD) for some time before deleting them definitively.
+  
+- Move both HEAD and the current branch pointer to the given commit:
+
+  ```
+  git reset [<CommitID>]
+  ```
+
+  - When `<CommitID>` is not provided, it defaults to `HEAD`.
+  - By default the Working Tree is untouched when resetting, files which differ will be marked as changed. The `--hard` option updates the Working Tree to match the state of the given commit (uncommitted changes are overwritten).
 
 
 ## Work with GitHub
