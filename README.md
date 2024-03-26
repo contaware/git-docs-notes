@@ -664,7 +664,7 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
 
   (legacy command `git checkout <branchname>`)
 
-- In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete those commits. To avoid the removal of the commits generated in the detached state, create a branch and switch to it:
+- In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete them after some time. To avoid that, create a branch and switch to it:
 
   ```
   git switch -c <branchname>
@@ -741,7 +741,7 @@ With the reset command we can drop commits or fix operations gone wrong like a r
   ```
 
   - The most recent operations are listed at the top.
-  - The Git garbage collector keeps orphaned commits (local commits not accessible by a branch, tag or HEAD) for some time before deleting them definitively.
+  - The Git garbage collector keeps local commits not accessible by a branch, tag or HEAD for some time before deleting them definitively.
   
 - Move both HEAD and the current branch pointer to the given commit:
 
