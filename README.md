@@ -135,9 +135,9 @@ git config --list
 
    If your really want to set it to something else:
 
-   - `true`:  LF to CRLF when checking out text files, when commiting text files CRLF -> LF
-   - `input`: No conversion on checkout, when commiting text files CRLF -> LF
-   - `false`: No conversion
+   - `true`:  LF to CRLF when checking out text files, when committing text files CRLF -> LF.
+   - `input`: No conversion on checkout, when committing text files CRLF -> LF.
+   - `false`: No conversion.
 
 3. By default the branch name for new repositories is `master` (can also 
    be set by Windows installer), but `main` is getting more popular:
@@ -269,15 +269,18 @@ After a commit has been created, it can be referenced by its hash value, and usu
   git log [<filename>]
   ```
 
-  - `-n` shows the last n commits
-  - `--oneline` displays in one-liners
-  - `--graph` displays a text-based graph in topological order
+  - `--follow` shows the history across renames (single file only).
+  - `-n` shows the last n commits.
+  - `--oneline` displays in one-liners.
+  - `--graph` displays a text-based graph in topological order.
 
 - Show information about the given `<CommitID>`:
 
   ```
-  git show <CommitID>
+  git show [<CommitID>]
   ```
+
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
 Hint: exit the pager by pressing the `q` key.
 
@@ -334,9 +337,9 @@ git mv <oldname> <newname>
   git clean
   ```
 
-  - `-f` force option is usually needed
-  - `-n` for a dry-run, it shows what would be removed
-  - `-x` removes also the ignored files
+  - `-f` force option is usually needed.
+  - `-n` for a dry-run, it shows what would be removed.
+  - `-x` removes also the ignored files.
 
 
 ### Restore files
@@ -384,10 +387,10 @@ The explicit association between a remote branch and a local branch is not manda
   git branch
   ```
 
-  - `-v` to be more verbose
-  - `-vv` really verbose, it shows upstream tracking configurations
-  - `-r` to see the remote-tracking branches
-  - `-a` to see all branches
+  - `-v` to be more verbose.
+  - `-vv` really verbose, it shows upstream tracking configurations.
+  - `-r` to see the remote-tracking branches.
+  - `-a` to see all branches.
 
 - Create:
 
