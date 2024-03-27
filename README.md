@@ -36,6 +36,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Merge](#merge)
   - [Stash](#stash)
   - [Switch to a commit/tag](#switch-to-a-committag)
+  - [Revert a commit](#revert-a-commit)
 - [Use with care](#use-with-care)
   - [Amend](#amend)
   - [Rebase](#rebase)
@@ -701,6 +702,20 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   ```
 
   (legacy command `git checkout -b <branchname>`)
+
+
+### Revert a commit
+
+This command is used to create a new commit that reverts the changes introduced by the given commit:
+
+```
+git revert <CommitID>
+```
+
+- The `-m parent-number` option is necessary for merge commits, it specifies the side of the merge to reverse. The parents can be seen in the log entry of the merge commit and are indexed starting from 1. Most of the time you want to revert the branch you merged into which would be `-m 1`.
+ 
+> If after reverting a merge commit you want to perform other merges from the same branch, it may be necessary to cancel out the revert by doing a revert of the revert, [see document here](https://git-scm.com/docs/howto/revert-a-faulty-merge).  
+> Hint: to avoid this, a team could choose to exclusively perform squash merges.
 
 
 ## Use with care
