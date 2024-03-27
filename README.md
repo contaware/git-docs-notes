@@ -609,6 +609,11 @@ git fetch [<remotename> [<remotebranchname>]]
 
 ### Merge
 
+> Git chooses one of these two types of merge:
+>
+> 1. When the current branch's tip is a direct ancestor of the branch you are merging in, Git does a **fast-forward merge** by just moving the HEAD and branch pointers of the current branch forward.
+> 2. When the current branch's tip isn't a direct ancestor of the branch you are merging in, Git does a **three-way merge** using the snapshots of the two branch tips and the **common ancestor** of the two.
+
 - Incorporate changes from the given branch into the current branch:
 
   ```
@@ -617,7 +622,7 @@ git fetch [<remotename> [<remotebranchname>]]
 
   - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
   - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
-  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. The detailed history of changes from the given branch are not integrated.
+  - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. This commit will only have one parent as opposed to the two parents of a Git created merge commit.
  
 - Interrupt a merge process and try to reconstruct the pre-merge state:
 
