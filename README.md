@@ -631,6 +631,8 @@ git fetch [<remotename> [<remotebranchname>]]
   git merge --abort
   ```
 
+<br>
+
 ![Git Merge](figures/git-merge.svg)
 
 
@@ -763,6 +765,8 @@ git commit --amend
   ```
   git rebase --abort
   ```
+
+<br>
 
 ![Git Rebase](figures/git-rebase.svg)
 
