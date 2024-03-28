@@ -37,6 +37,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Stash](#stash)
   - [Switch to a commit/tag](#switch-to-a-committag)
   - [Revert a commit](#revert-a-commit)
+  - [Pick a commit](#pick-a-commit)
 - [Use with care](#use-with-care)
   - [Amend](#amend)
   - [Rebase](#rebase)
@@ -720,6 +721,25 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
 
 > If after reverting a merge commit you want to perform other merges from the same branch, it may be necessary to cancel out the revert by doing a revert of the revert, [see document here](https://git-scm.com/docs/howto/revert-a-faulty-merge).  
 > Hint: to avoid this, a team could choose to exclusively perform squash merges.
+
+
+### Pick a commit
+
+- Create a new commit with the changes introduced by the given commit:
+
+  ```
+  git cherry-pick <CommitID>
+  ```
+
+  - If there are merge conflicts, review the annotated files, `git add` them and continue with `git cherry-pick --continue`.
+  - The `-e` option lets you edit the commit message.
+  - With the `--no-commit` option the changes are only applied to the Working Tree and the Staging Area.
+
+- Interrupt a cherry-pick process and reconstruct the pre-cherry-pick state:
+
+  ```
+  git cherry-pick --abort
+  ```
 
 
 ## Use with care
