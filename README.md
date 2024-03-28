@@ -625,7 +625,7 @@ git fetch [<remotename> [<remotebranchname>]]
   ```
 
   - If `<branchname>` is not provided, then it is read from the current branch's [upstream tracking configurations](#branch).
-  - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and `git commit`.
+  - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and continue with `git merge --continue`.
   - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. This commit will only have one parent as opposed to the two parents of a Git created merge commit.
  
 - Interrupt a merge process and try to reconstruct the pre-merge state:
