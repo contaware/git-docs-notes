@@ -628,7 +628,7 @@ git fetch [<remotename> [<remotebranchname>]]
   - This command will try to auto-merge, if it fails, it will annotate your text files with the **conflicts**. You have to review the annotated files, `git add` them and continue with `git merge --continue`.
   - With the `--squash` option the merge produces its results in the Working Tree and the Staging Area. You will then do a commit on top of the current branch. This commit will only have one parent as opposed to the two parents of a Git created merge commit.
  
-- Interrupt a merge process and try to reconstruct the pre-merge state:
+- Interrupt a merge process and reconstruct the pre-merge state:
 
   ```
   git merge --abort
@@ -720,7 +720,7 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   - If there are merge conflicts, review the annotated files, `git add` them and continue with `git revert --continue`.
   - The `-m parent-number` option is necessary to revert merge commits, it specifies the side of the merge to reverse. The parents can be seen in the log entry of the merge commit and are indexed starting from 1. Most of the time you want to revert the branch you merged into which would be `-m 1`.
 
-- Interrupt a revert process and try to reconstruct the pre-revert state:
+- Interrupt a revert process and reconstruct the pre-revert state:
 
   ```
   git revert --abort
@@ -770,7 +770,7 @@ git commit --amend
   - The `-i` option opens a file where all commits are listed, with the leading command you decide the fate of each commit. To re-order the commits move them in the list, to change the commit messages use **reword**, **squash** is to meld into the previous listed commit and **drop** is self-explanatory.
   - By default a rebase will put the rebased commits into a single linear branch. With `--rebase-merges` the branching structure is preserved.
 
-- Interrupt a rebase process and try to reconstruct the pre-rebase state:
+- Interrupt a rebase process and reconstruct the pre-rebase state:
 
   ```
   git rebase --abort
