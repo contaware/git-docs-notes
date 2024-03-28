@@ -411,10 +411,12 @@ The explicit association between a remote branch and a local branch is not manda
 - Create and switch to it (uncommitted changes are not touched):
 
   ```
-  git switch -c <branchname>
+  git switch -c <branchname> [<CommitID>]
   ```
 
-  (legacy command `git checkout -b <branchname>`)
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
+
+  (legacy command `git checkout -b <branchname> [<CommitID>]`)
 
 - Switch:
   
