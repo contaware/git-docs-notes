@@ -2,6 +2,7 @@
 
 This document is a reference guide for the common Git commands run from a terminal. GitHub is taken as an example of remote repository.
 
+
 ## Table of contents <!-- omit from toc -->
 
 - [Introduction](#introduction)
@@ -27,6 +28,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Restore files](#restore-files)
   - [Branch](#branch)
   - [Tags](#tags)
+- [Remote Use](#remote-use)
   - [Remote repository connections](#remote-repository-connections)
   - [Clone](#clone)
   - [Push](#push)
@@ -52,6 +54,7 @@ This document is a reference guide for the common Git commands run from a termin
 
 Version control systems (VCS) are used to log your changes while you progress in your coding.
 
+
 ### Code organization
 
 1. **Main branch** is where your current stable production code is located. It only includes tested and unbroken code. It acts as a base from where all changes are made.
@@ -60,9 +63,11 @@ Version control systems (VCS) are used to log your changes while you progress in
 
 3. **Tags** mark releases of your code.
 
+
 ### Git repositories
 
 A repository contains all the files of a project including the history of changes. Unlike fully centralized versioning systems, Git utilizes a central repository and a series of local repositories. Those local repositories are an exact copy of the central repository with the complete history of changes. The central repository is only needed to synchronize the repositories, in fact, it's possible to run a single local repository without a central repository.
+
 
 ### Git architecture
 
@@ -79,12 +84,12 @@ A repository contains all the files of a project including the history of change
 
 ## Install
 
-
 To see whether Git is already installed, in your terminal run:
 
 ```
 git version
 ```
+
 
 ### Linux
 
@@ -93,6 +98,7 @@ To install on Debian/Ubuntu:
 ```
 sudo apt install git
 ```
+
 
 ### macOS
 
@@ -103,6 +109,7 @@ brew install git
 ```
 
 Close and reopen your terminal so that it finds the new version.
+
 
 ### Windows
 
@@ -482,6 +489,8 @@ Tags do reference specific commits. There are annotated tags which store more in
   git tag -d <tagname>
   ```
 
+
+## Remote Use
 
 ### Remote repository connections
 
