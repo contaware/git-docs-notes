@@ -592,6 +592,15 @@ If someone else pushes its code and then you try to push as well, your push will
 
   - Default values for `<remotename>` and `<remotebranchname>` are read from the current branch's [upstream tracking configurations](#branch).
 
+- Download content from the given remote branch and create a new local branch:
+
+  ```
+  git fetch <remotename> <remotebranchname>
+  git switch -c <branchname> <remotename>/<remotebranchname>
+  ```
+
+  - The create and switch command will also set the [upstream tracking configurations](#branch).
+
 - A pull is a combination of two commands:
 
   ```
