@@ -645,13 +645,13 @@ The stash command saves your current local changes and goes back to a clean stat
 
 The stash is organized as a stack. The items are accessed by `stash@{n}` with `n=0` being the latest added one. When `stash@{n}` is not provided it defaults to `stash@{0}`. When applying a stash item, Git tries to auto-merge and on conflicts it will prompt to solve.
 
-- Stash Working Tree and Staging Area:
+- Stash Working Tree and Staging Area (all files are reverted to a clean state):
 
   ```
   git stash -m "msg"
   ```
 
-- Stash Staging Area only, Working Tree is not touched:
+- Stash Staging Area (only the files in the Staging Area are reverted to a clean state):
 
   ```
   git stash --staged -m "msg"
@@ -663,13 +663,7 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   git stash list
   ```
 
-- Apply the given stash entry and remove it:
-  
-  ```
-  git stash pop [stash@{n}]
-  ```
-
-- Apply the given stash entry:
+- Apply the given stash entry (stash entry is not removed):
 
   ```
   git stash apply [stash@{n}]
