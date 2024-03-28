@@ -119,7 +119,7 @@ For Windows [download](https://git-scm.com/download/win) the installer and run i
 where git.exe
 ```
 
-If it's no the first, then open the Environment Variables dialog, under System variables select the `Path` variable, press Edit... and Move Up the `C:\Program Files\Git\cmd` directory to the top. Now close and reopen your terminal to confirm the correct version.
+If it's not the first, then open the Environment Variables dialog, under System variables select the `Path` variable, press Edit... and Move Up the `C:\Program Files\Git\cmd` directory to the top. Now close and reopen your terminal to confirm the correct version.
 
 
 ## Config
