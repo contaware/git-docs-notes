@@ -395,8 +395,10 @@ The explicit association between a remote branch and a local branch is not manda
 - Create:
 
   ```
-  git branch <branchname>
+  git branch <branchname> [<CommitID>]
   ```
+
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
 - Create and switch to it (uncommitted changes are not touched):
 
@@ -794,7 +796,7 @@ With the reset command we can drop commits or fix operations gone wrong like a r
   git reset [<CommitID>]
   ```
 
-  - When `<CommitID>` is not provided, it defaults to `HEAD`.
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
   - By default the Working Tree is untouched when resetting, files which differ will be marked as changed. The `--hard` option updates the Working Tree to match the state of the given commit (uncommitted changes are overwritten).
 
 
