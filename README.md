@@ -455,7 +455,7 @@ The explicit association between a remote branch and a local branch is not manda
 
 ### Tags
 
-Tags do reference specific commits. There are annotated tags which store more information and lightweight ones meant for private local bookmarks.
+Tags do reference specific commits. There are annotated tags which store more information, and lightweight tags meant as private local bookmarks.
 
 - List:
 
@@ -463,21 +463,17 @@ Tags do reference specific commits. There are annotated tags which store more in
   git tag
   ```
 
-- Create for given `<CommitID>` (defaults to HEAD if missing): 
-  
-  - Lightweight:
+  - The `-n` option will also print annotation messages or commit messages for lightweight tags.
 
-    ```
-    git tag <tagname> <CommitID>
-    ```
+- Create/update:
 
-  - Annotated:
+  ```
+  git tag <tagname> [<CommitID>]
+  ```
 
-    ```
-    git tag -a -m "msg" <tagname> <CommitID>
-    ```
-
-  Note: with the `-f` force option it's possible to update and existing tag.
+  - If `<CommitID>` is not provided it **defaults** to `HEAD`.
+  - With `-a -m "msg"` we get an **annotated tag** instead of a **lightweight tag**.
+  - The `-f` option permits **updating** and existing tag.
 
 - Delete:
   
