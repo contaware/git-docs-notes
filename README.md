@@ -35,7 +35,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Fetch](#fetch)
   - [Merge](#merge)
   - [Stash](#stash)
-  - [Switch to a commit/tag](#switch-to-a-committag)
+  - [Switch to a commit](#switch-to-a-commit)
   - [Revert a commit](#revert-a-commit)
   - [Pick a commit](#pick-a-commit)
 - [Use with care](#use-with-care)
@@ -675,7 +675,7 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   ```
 
 
-### Switch to a commit/tag
+### Switch to a commit
 
 - Normally HEAD is a pointer to a branch which by itself refers to its latest commit. When HEAD directly points to a commit, it gets detached from all branches:
 
