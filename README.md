@@ -361,11 +361,7 @@ git mv <oldname> <newname>
   git restore --staged <filename>
   ```
 
-  There must be at least a commit, if not, then unstage with:
-
-  ```
-  git rm --cached <filename>
-  ```
+  - There must be at least a commit, if not, then unstage with `git rm --cached <filename>`.
 
 - Revert Working Tree by taking it from Staging Area:
   
@@ -378,6 +374,12 @@ git mv <oldname> <newname>
   ```
   git restore -s <CommitID> --staged --worktree <filename>
   ```
+
+> Command defaults:
+> 1. If no destination is specified, it defaults to `--worktree`.
+> 2. The default source for `--worktree` is the Staging Area.
+> 3. The default source for `--staged` is `HEAD`.
+> 4. When both `--staged` and `--worktree` are specified, `-s` must also be specified.
 
 
 ### Branch
