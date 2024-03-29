@@ -49,8 +49,8 @@ This document is a reference guide for the common Git commands run from a termin
   - [Pull-request (PR)](#pull-request-pr)
   - [Update a fork](#update-a-fork)
 - [Legacy git checkout](#legacy-git-checkout)
-  - [Switch branch](#switch-branch)
-  - [Restore file](#restore-file)
+  - [Switch vs checkout](#switch-vs-checkout)
+  - [Restore vs checkout](#restore-vs-checkout)
 
 
 ## Introduction
@@ -909,7 +909,7 @@ After a while the repository of the other person may have changed, before doing 
 The `git checkout` is confusing, especially for beginners, because it performs two distinct tasks in one command. Fortunately we now have `git switch` and `git restore`, but many documents still use `git checkout`, so we must know about it.
 
 
-### Switch branch
+### Switch vs checkout
 
 - Switch to the given branch:
   - `git switch <branchname>`
@@ -924,7 +924,7 @@ The `git checkout` is confusing, especially for beginners, because it performs t
   - `git checkout <CommitID>` (legacy command)
 
 
-### Restore file
+### Restore vs checkout
 
 - Revert Staging Area (unstage) by taking it from HEAD:
   - `git restore --staged <filename>`
