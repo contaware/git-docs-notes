@@ -553,7 +553,13 @@ The clone command copies the entire repository to a local directory which may al
   git clone https://github.com/username/repo.git local_dir
   ```
 
-Note: the command also creates a remote connection named `origin` pointing back to the cloned repository.
+The clone command creates a remote connection named `origin` pointing back to the cloned repository.
+
+The clone command only creates the local branch **main** (or master) with the correct [upstream tracking configurations](#branch). To create the **other local branches** and set their [upstream tracking configurations](#branch):
+
+```
+git branch <localbranchname> <remotename>/<remotebranchname>
+```
 
 
 ### Push
@@ -596,7 +602,7 @@ If someone else pushes its code and then you try to push as well, your push will
 
   ```
   git fetch <remotename> <remotebranchname>
-  git switch -c <branchname> <remotename>/<remotebranchname>
+  git switch -c <localbranchname> <remotename>/<remotebranchname>
   ```
 
   - The create and switch command will also set the [upstream tracking configurations](#branch).
