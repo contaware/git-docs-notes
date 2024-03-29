@@ -909,15 +909,15 @@ The `git checkout` is confusing, especially for beginners, because it performs t
 
 ### Switch branch
 
-- To switch to the given branch:
+- Switch to the given branch:
   - `git switch <branchname>`
   - `git checkout <branchname>` (legacy command)
   
-- To create and switch to the given branch:
+- Create and switch to the given branch:
   - `git switch -c <branchname>`
   - `git checkout -b <branchname>` (legacy command)
 
-- To switch to a commit detaching the HEAD:
+- Switch to a commit detaching the HEAD:
   - `git switch -d <CommitID>` (without `-d` the command fails)
   - `git checkout <CommitID>` (legacy command)
 
