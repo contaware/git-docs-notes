@@ -597,10 +597,10 @@ If someone else pushes its code and then you try to push as well, your push will
 
   ```
   git fetch <remotename> <remotebranchname>
-  git switch -c <localbranchname> <remotename>/<remotebranchname>
+  git branch <localbranchname> <remotename>/<remotebranchname>
   ```
 
-  - The create and switch command will also set the [upstream tracking configurations](#branch).
+  - The branch command will also set the [upstream tracking configurations](#branch).
 
 - A pull is a combination of two commands:
 
