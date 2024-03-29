@@ -48,6 +48,9 @@ This document is a reference guide for the common Git commands run from a termin
   - [Repository names](#repository-names)
   - [Pull-request (PR)](#pull-request-pr)
   - [Update a fork](#update-a-fork)
+- [Legacy git checkout](#legacy-git-checkout)
+  - [Switch branch](#switch-branch)
+  - [Restore file](#restore-file)
 
 
 ## Introduction
@@ -364,23 +367,17 @@ git mv <oldname> <newname>
   git rm --cached <filename>
   ```
 
-  (legacy command `git reset <filename>`)
-
 - Revert Working Tree by taking it from Staging Area:
   
   ```
   git restore <filename>
   ```
 
-  (legacy command `git checkout <filename>`)
-
 - Revert Working Tree and Staging Area by taking it from given source:
 
   ```
   git restore -s <CommitID> --staged --worktree <filename>
   ```
-
-  (legacy command `git checkout <CommitID> <filename>`)
 
 
 ### Branch
@@ -416,15 +413,11 @@ The explicit association between a remote branch and a local branch is not manda
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
-  (legacy command `git checkout -b <branchname> [<CommitID>]`)
-
 - Switch:
   
   ```
   git switch <branchname>
   ```
-
-  (legacy command `git checkout <branchname>`)
 
 - Delete local:
 
@@ -709,23 +702,17 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
   git switch -d <CommitID>
   ```
 
-  (legacy command `git checkout <CommitID>`)
-
 - To "re-attach" the HEAD, just switch back to a branch:
 
   ```
   git switch <branchname>
   ```
 
-  (legacy command `git checkout <branchname>`)
-
 - In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete them after some time. To avoid that, create a branch and switch to it:
 
   ```
   git switch -c <branchname>
   ```
-
-  (legacy command `git checkout -b <branchname>`)
 
 
 ### Revert a commit
@@ -913,3 +900,38 @@ After a while the repository of the other person may have changed, before doing 
    ```
    git push origin main
    ```
+
+
+## Legacy git checkout
+
+The `git checkout` is confusing, especially for beginners, because it performs two distinct tasks in one command. Fortunately we now have `git switch` and `git restore`, but many documents still use `git checkout`, so we must know about it.
+
+
+### Switch branch
+
+- To switch to the given branch:
+  - `git switch <branchname>`
+  - `git checkout <branchname>` (legacy command)
+  
+- To create and switch to the given branch:
+  - `git switch -c <branchname>`
+  - `git checkout -b <branchname>` (legacy command)
+
+- To switch to a commit detaching the HEAD:
+  - `git switch -d <CommitID>` (without `-d` the command fails)
+  - `git checkout <CommitID>` (legacy command)
+
+
+### Restore file
+
+- Revert Staging Area (unstage) by taking it from HEAD:
+  - `git restore --staged <filename>`
+  - `git reset <filename>` (legacy command)
+  
+- Revert Working Tree by taking it from Staging Area:
+  - `git restore <filename>`
+  - `git checkout <filename>` (legacy command)
+  
+- Revert Working Tree and Staging Area by taking it from given source:
+  - `git restore -s <CommitID> --staged --worktree <filename>`
+  - `git checkout <CommitID> <filename>` (legacy command)
