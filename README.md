@@ -764,7 +764,7 @@ The commands in this section will **delete commits** and **replace commits**, so
 
 ### Amend
 
-Edit last commit:
+Edit current branch's tip commit:
 
 ```
 git add <correctfile>
@@ -773,7 +773,7 @@ git commit --amend
 ```
 
 - The editor will open to let you change the commit message.
-- It removes your last commit and replaces it with a new one having a different hash.
+- It removes the tip commit and replaces it with a new one having a different hash.
 
 
 ### Rebase
