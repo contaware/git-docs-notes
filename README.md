@@ -46,7 +46,8 @@ This document is a reference guide for the common Git commands run from a termin
   - [Reset](#reset)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
-  - [Pull-request (PR)](#pull-request-pr)
+  - [Make a Pull-request (PR)](#make-a-pull-request-pr)
+  - [Merge a Pull-request (PR)](#merge-a-pull-request-pr)
   - [Update a fork](#update-a-fork)
 - [Legacy git checkout](#legacy-git-checkout)
   - [Switch vs checkout](#switch-vs-checkout)
@@ -845,7 +846,7 @@ With the reset command we can drop commits or fix operations gone wrong like a r
 - Prefer all lowercase letters.
 
 
-### Pull-request (PR)
+### Make a Pull-request (PR)
 
 1. Fork another's person repository:
    
@@ -854,11 +855,11 @@ With the reset command we can drop commits or fix operations gone wrong like a r
 2. In your terminal clone the above forked repository:
 
    ```
-   git clone https://github.com/username/repo.git
+   git clone https://github.com/username-fork/repo.git
    cd repo
    ```
 
-3. Create a new branch and switch to it:
+3. Create a new branch with the name you like and switch to it:
    
    ```
    git switch -c <branchname>
@@ -880,14 +881,61 @@ With the reset command we can drop commits or fix operations gone wrong like a r
 6. On GitHub go to the forked repository and create the pull request.
 
 
-### Update a fork
+### Merge a Pull-request (PR)
 
-After a while the repository of the other person may have changed, before doing another PR, it's important to update your fork. By convention the connection alias of the original repository is named `upstream`. 
+It's possible to merge a PR from the GitHub web interface, but sometimes you want to test the code in your local repository and also merge it there, let's see how.
 
-1. Add the original repository source (read-only for you):
+1. Download the PR into a new local branch with the name you like:
+
+   - **Option A** is the preferred choice, the PR is taken from the forked repository:
+
+     ```
+     git switch -c <branchname> main
+     git pull https://github.com/username-fork/repo.git <branchname>
+     ```
+
+     - The fork url can be found in your GitHub under the PR.
+     - In your GitHub you can ask the creator of the PR to make changes through additional commits. The PR will automatically update itself, you only have to repeat the above pull command to get the new commits.
+   
+   - **Option B** must be used when the fork has been deleted:
+
+     ```
+     git fetch origin pull/<ID>/head:<branchname>
+     git switch <branchname>
+     ```
+
+     - Replace `<ID>` with the PR number found in your GitHub.
+     - The remote `refs/pull/` namespace is read-only, it's not possible to push to it.
+
+2. Optionally do your corrections by adding commits to `<branchname>`:
+   
+   ```
+   git add ...
+   git commit -m "Adaptations to PR"
+   ```
+
+   - Your changes will not appear in the GitHub PR, use the commit messages to refer to the PR.
+   
+3. Merge `<branchname>` into `main` and push `main` to GitHub:
 
    ```
-   git remote add upstream https://github.com/otherusername/repo.git
+   git switch main
+   git merge --no-ff <branchname>
+   git push origin main
+   ```
+
+   - Most of the time GitHub will detect that the PR has been merged from the terminal, in case it does not detect it, you can manually close the PR.
+   - The `--no-ff` option is suggested by GitHub, it prevents fast-forward merges. You can also omit it, in which case a fast-forward merge is performed when possible. Note that fast-forward merges can only be done from the terminal, GitHub does not offer this possibility in the web interface.
+
+
+### Update a fork
+
+After a while the original repository may change, before doing another PR, it's important to update your fork. There is a handy button in your GitHub, but if you also have a local clone, you must update it from the terminal. By convention the connection alias of the original repository is named `upstream`.
+
+1. Add the original repository (read-only for you):
+
+   ```
+   git remote add upstream https://github.com/username-original/repo.git
    ```
 
 2. Pull changes into `main`:
