@@ -910,7 +910,7 @@ It's possible to merge a PR from the GitHub web interface, but sometimes you wan
 2. Optionally do your corrections by adding commits to `<branchname>`:
    
    ```
-   git add ...
+   git add <filename>
    git commit -m "Adaptations to PR"
    ```
 
