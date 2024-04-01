@@ -575,7 +575,7 @@ If someone else pushes its code and then you try to push as well, your push will
   - When omitting `<localbranchname>`, then the current branch is pushed to the remote branch with the same name, but only if the [upstream tracking configurations](#branch) have the same two names set.
   - If `<remotename>` is not provided, then Git pushes to the remote from the [upstream tracking configurations](#branch).
 
-- Tags have to be pushed explicitly:
+- Tags have to be pushed explicitly (as opposed to pull and fetch which get them automatically):
 
   ```
   git push <remotename> <tagname>
