@@ -494,7 +494,7 @@ Tags do reference specific commits. There are annotated tags which store more in
 
 - Add:
   
-  The following command adds the `<remotename>` alias for the given URL:
+  The following command adds the `<remotename>` alias for the given url:
 
   ```
   git remote add <remotename> https://github.com/username/repo.git
