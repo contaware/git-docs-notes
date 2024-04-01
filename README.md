@@ -622,7 +622,7 @@ If someone else pushes its code and then you try to push as well, your push will
 
 ### Fetch
 
-Fetch remote branch (including tags) and update the remote-tracking branch:
+Fetch from remote branch into remote-tracking branch:
 
 ```
 git fetch [<remotename> [<remotebranchname>]]
@@ -630,6 +630,19 @@ git fetch [<remotename> [<remotebranchname>]]
 
 - If `<remotebranchname>` is omitted, then all branches from `<remotename>` are fetched.
 - If `<remotename>` is also not present, then it is read from the current branch's [upstream tracking configurations](#branch). When the [upstream tracking configurations](#branch) are missing, `origin` is fetched.
+- Fetch knows the destination thanks to the `remote.<remotename>.fetch=+refs/heads/*:refs/remotes/<remotename>/*` configuration automatically created with `<remotename>`.
+
+Fetch from remote branch without passing through the remote-tracking branch:
+
+```
+git fetch https://github.com/username/repo.git <remotebranchname>[:<localbranchname>]
+```
+
+- If `<localbranchname>` is given, the command may refuse to update it, use `-f` to force that.
+
+- If `<localbranchname>` is omitted, the fetched objects can be accessed through `FETCH_HEAD (e.g. git log FETCH_HEAD)`. Remember that with the next fetch, the Git garbage collector can clean-up unreferenced objects of a previous fetch.
+
+> If a branch name does not start with `refs/ (e.g. refs/heads/main)` the command will try to infer where in `refs/*` it belongs.
 
 
 ### Merge
