@@ -301,7 +301,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   git blame <filename>
   ```
 
-  - Use `-L <start>,<end>` to limit the lines range (one-based indexes).
+  - Use `-L <start>[,<end>]` to limit the lines range (one-based indexes).
   
 Hint: exit the pager by pressing the `q` key.
 
