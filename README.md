@@ -283,6 +283,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - `--follow` shows the history across renames (single file only).
   - `-n` shows the last n commits.
+  - `-S "string"` shows commits in which the number of `string` occurrences changed.
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
 
@@ -294,6 +295,14 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
+- Show `<filename>` with the commits that last changed each line:
+
+  ```
+  git blame <filename>
+  ```
+
+  - Use `-L <start>,<end>` to limit the lines range (one-based indexes).
+  
 Hint: exit the pager by pressing the `q` key.
 
 
