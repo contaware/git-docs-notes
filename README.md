@@ -852,7 +852,8 @@ With the reset command we can drop commits or fix operations gone wrong like a r
   ```
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
-  - By default the Working Tree is untouched when resetting, files which differ will be marked as changed. The `--hard` option updates the Working Tree to match the state of the given commit (uncommitted changes are overwritten).
+  - By default the files in the Staging Area are reset (unstaged), but the **Working Tree** remains **untouched**.
+  - With the `--hard` option also the Working Tree is reset to match the state of the given commit (uncommitted changes are overwritten).
 
 
 ## Work with GitHub
