@@ -490,10 +490,18 @@ Tags do reference specific commits. There are annotated tags which store more in
   - With `-a -m "msg"` we get an **annotated tag** instead of a **lightweight tag**.
   - The `-f` option permits **updating** and existing tag.
 
-- Delete:
+  Hint: the [Push](#push) section shows how to upload the tags to the remote repository.
+
+- Delete local:
   
   ```
   git tag -d <tagname>
+  ```
+
+- Delete remote:
+
+  ```
+  git push -d <remotename> <remotetagname>
   ```
 
 
