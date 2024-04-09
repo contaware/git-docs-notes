@@ -308,7 +308,7 @@ Hint: exit the pager by pressing the `q` key.
 
 ### Diff
 
-If no `<filename>` is provided the command will show changes for all files. If a file is not staged, then the Staging Area contains the file's last commit.
+If no `<filename>` is provided the command will show changes for all files. By default it shows the lines that changed, with the `--word-diff` option it highlights the words differences as `[-removed-]` and `{+added+}`.
 
 - `<CommitID>` vs Working Tree:
 
