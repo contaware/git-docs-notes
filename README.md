@@ -365,13 +365,17 @@ git mv <oldname> <newname>
 
 ### Restore files
 
-- Revert Staging Area (unstage) by taking it from HEAD:
+File restoration does copy a file from the given source to the Working Tree and/or the Staging Area overwriting without warning.
+
+To better understand the following commands, it's important to remember that when a tracked file is not staged, the Staging Area contains the `HEAD` commit version of that file.
+
+- Revert Staging Area (unstage) by taking it from `HEAD`:
 
   ```
   git restore --staged <filename>
   ```
 
-  - There must be at least a commit, if not, then unstage with `git rm --cached <filename>`.
+  - If `<filename>` is not in `HEAD`, then it is removed from the Staging Area. Note that if the repository is new, with no commits, you must unstage with `git rm --cached <filename>`.
 
 - Revert Working Tree by taking it from Staging Area:
   
@@ -385,11 +389,9 @@ git mv <oldname> <newname>
   git restore -s <CommitID> --staged --worktree <filename>
   ```
 
-> Command defaults:
+> Restore command defaults:
 > 1. If no destination is specified, it defaults to `--worktree`.
-> 2. The default source for `--worktree` is the Staging Area.
-> 3. The default source for `--staged` is `HEAD`.
-> 4. When both `--staged` and `--worktree` are specified, `-s` must also be specified.
+> 2. `HEAD` is the default source if `--staged` is given, otherwise it is the Staging Area.
 
 
 ### Branch
