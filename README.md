@@ -667,7 +667,7 @@ git fetch <repourl> <remotebranchname>[:<localbranchname>]
 
 > Git chooses one of these two types of merge:
 >
-> 1. When the current branch's tip is a direct ancestor of the branch you are merging in, Git does a **fast-forward merge** by just moving the HEAD and branch pointers of the current branch forward.
+> 1. When the current branch's tip is a direct ancestor of the branch you are merging in, Git does a **fast-forward merge** by just moving the `HEAD` and branch pointers of the current branch forward.
 > 2. When the current branch's tip isn't a direct ancestor of the branch you are merging in, Git does a **three-way merge** using the snapshots of the two branch tips and the **common ancestor** of the two.
 
 - Incorporate changes from the given branch into the current branch:
@@ -730,19 +730,19 @@ The stash is organized as a stack. The items are accessed by `stash@{n}` with `n
 
 ### Switch to a commit
 
-- Normally HEAD is a pointer to a branch which by itself refers to its latest commit. When HEAD directly points to a commit, it gets detached from all branches:
+- Normally `HEAD` is a pointer to a branch which by itself refers to its latest commit. When `HEAD` directly points to a commit, it gets detached from all branches:
 
   ```
   git switch -d <CommitID>
   ```
 
-- To "re-attach" the HEAD, just switch back to a branch:
+- To "re-attach" the `HEAD`, just switch back to a branch:
 
   ```
   git switch <branchname>
   ```
 
-- In the HEAD detached state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete them after some time. To avoid that, create a branch and switch to it:
+- In the detached `HEAD` state, commits can be performed, but as soon as we switch away, the Git garbage collector will delete them after some time. To avoid that, create a branch and switch to it:
 
   ```
   git switch -c <branchname>
@@ -844,16 +844,16 @@ git commit --amend
 
 With the reset command we can drop commits or fix operations gone wrong like a rebase for example.
 
-- Show the branch and HEAD modifications log to find the wanted commit:
+- Show the branch and `HEAD` modifications log to find the wanted commit:
 
   ```
   git reflog
   ```
 
   - The most recent operations are listed at the top.
-  - The Git garbage collector keeps local commits not accessible by a branch, tag or HEAD for some time before deleting them definitively.
+  - The Git garbage collector keeps local commits not accessible by a branch, tag or `HEAD` for some time before deleting them definitively.
   
-- Move both HEAD and the current branch pointer to the given commit:
+- Move both `HEAD` and the current branch pointer to the given commit:
 
   ```
   git reset [<CommitID>]
@@ -999,14 +999,14 @@ The `git checkout` is confusing, especially for beginners, because it performs t
   - `git switch -c <branchname>`
   - `git checkout -b <branchname>` (legacy command)
 
-- Switch to a commit detaching the HEAD:
+- Switch to a commit detaching the `HEAD`:
   - `git switch -d <CommitID>` (without `-d` the command fails)
   - `git checkout <CommitID>` (legacy command)
 
 
 ### Restore vs checkout
 
-- Revert Staging Area (unstage) by taking it from HEAD:
+- Revert Staging Area (unstage) by taking it from `HEAD`:
   - `git restore --staged <filename>`
   - `git reset <filename>` (legacy command)
   
