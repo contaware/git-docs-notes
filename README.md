@@ -283,7 +283,8 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - `--follow` shows the history across renames (single file only).
   - `-n` shows the last n commits.
-  - `-S "string"` shows commits in which the number of `string` occurrences changed.
+  - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
+  - `-S "code"` shows commits in which the number of `code` occurrences changed.
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
 
