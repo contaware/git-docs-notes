@@ -270,8 +270,12 @@ Note: if any of the ignored files were already being tracked, Git would continue
   git commit -a
   ```
 
-After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. In a local repository `HEAD` points to the currently checked-out branch or commit when in [detached HEAD state](#switch-to-a-commit). A branch always refers to its latest commit. Appending a tilde with a number means to go back by the given amount of generations, so `HEAD~1` refers to the 2nd most recent commit and `HEAD~2` is the 3rd most recent one.
+After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. A branch always refers to its latest commit. In a local repository `HEAD` points to the currently checked-out branch, or directly to a commit when in [detached HEAD state](#switch-to-a-commit).
 
+> - Appending a tilde with a number to `HEAD` or a branch, means to go back by the given amount of generations, so `HEAD~1` refers to the parent commit and `HEAD~2` is the grandparent one. The tilde symbol always follows the first parent ([merge commits](#merge) have two parents).
+> - With the caret symbol we can specify the parent to follow, `HEAD^<n>` means the n-th parent.
+> - `HEAD~1` or `HEAD~` or `HEAD^1` or `HEAD^` are all equivalent.
+> - We can use multiple carets or even combine tilde and caret, like `HEAD~2^2` which means "go back to grandparent and then take the second parent of it".
 
 ### Log
 
