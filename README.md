@@ -248,9 +248,20 @@ Hint: Git tracks files, not directories. To track an empty directory (that conta
 Create a file named `.gitignore`, open it and one per line enter the file/directory names to ignore:
 
 ```
+# Ignored files/directories
 *.dat
-results/
+/obj/
+data/binary/
 ```
+
+- A line starting with `#` serves as a **comment**.
+- The slash `/` is used as the directory separator.
+- An asterisk `*` matches **anything** except a slash. The character `?` matches any **one character** except a slash.
+- If there is a slash `/` at the **end**, then the pattern will only match directories.
+- If there is a slash `/` at the **beginning** or **middle** (or both), then the pattern is relative to the location of the `.gitignore` file. Otherwise the pattern matches at any level.  
+  Examples:
+  1. `obj/` matches at any level, while `/obj/` only matches relative to `.gitignore` location.
+  2. `data/binary/` and `/data/binary/` both only match relative to `.gitignore` location.
 
 Note: if any of the ignored files were already being tracked, Git would continue to track them.
 
