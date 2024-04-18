@@ -219,13 +219,14 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
   git add <filename1> <filename2>
   ```
 
-- Add files in current directory recursively (.gitignore is honored):
+- Add files in current directory and in all subdirectories (.gitignore is honored):
 
   ```
   git add .
   ```
 
-  Attention: avoid `git add *` because .gitignore is not taken into account and files beginning with a dot are not added.
+  - Use `-n` to just show what would be added, handy to test `.gitignore`.
+  - Avoid `git add *` because `.gitignore` is not taken into account and files beginning with a dot are not added.
 
 - Add all tracked files that have been modified or deleted:
 
