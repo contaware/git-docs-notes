@@ -363,6 +363,8 @@ Stage for rename and rename in Working Tree (can be undo):
 git mv <oldname> <newname>
 ```
 
+Hint: you can also manually rename a file/directory and as soon as you stage with `git add .`, Git will detect the rename and history will be preserved.
+
 
 ### Remove files
 
