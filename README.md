@@ -14,6 +14,8 @@ This document is a reference guide for the common Git commands run from a termin
   - [macOS](#macos)
   - [Windows](#windows)
 - [Config](#config)
+  - [Basic setup](#basic-setup)
+  - [Management](#management)
 - [Use](#use)
   - [Init a repository](#init-a-repository)
   - [Status](#status)
@@ -129,10 +131,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
 
 ## Config
 
-To list the current configurations run:
-```
-git config --list
-```
+### Basic setup
 
 1. Set your credentials:
    ```
@@ -177,6 +176,43 @@ git config --list
      ```
      git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
      ```
+
+### Management
+
+- There are multiple places to store the configurations. In order of precedence, from **highest to lowest**, we have:
+
+  1. Repository specific stored in `.git/config` and selected by `--local`.
+  2. User-specific stored in `~/.gitconfig` and selected by `--global`.
+  3. System-wide stored in `/etc/gitconfig` and selected by `--system`.
+
+- List the configurations:
+  ```
+  git config --list --show-origin
+  ```
+
+- Read the configuration with the **highest precedence**:
+
+  ```
+  git config <name>
+  ```
+
+  - Use `--local`, `--global` or `--system` to only read from the respective locations. 
+
+- Write `<value>` to the **local configuration** file:
+
+  ```
+  git config <name> <value>
+  ```
+
+  - Use `--global` or `--system` to write to the other locations.
+
+- Remove `<name>` from the **local configuration** file:
+
+  ```
+  git config --unset <name>
+  ```
+
+  - Use `--global` or `--system` to remove from the other locations.
 
 
 ## Use
