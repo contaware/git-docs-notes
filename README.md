@@ -400,7 +400,11 @@ Stage for rename and rename in Working Tree (can be undo):
 git mv <oldname> <newname>
 ```
 
-Hint: you can also manually rename a file/directory and as soon as you stage with `git add .`, Git will detect the rename and history will be preserved.
+Manual rename:
+
+- Git will detect manually renamed files/directories as soon as you stage with the `git add .` command.
+- Renamed files with modified content will also be detected if they do not differ too much. If the detection does not work, split the modifications and the renames into two commits.
+- File history is preserved when Git detects the renames.
 
 
 ### Remove files
