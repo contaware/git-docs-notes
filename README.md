@@ -365,12 +365,12 @@ Hint: exit the pager by pressing the `q` key.
 
 ### Diff
 
-If no `<filename>` is provided the command will show changes for all files. By default it shows the lines that changed, with the `--word-diff` option it highlights the words differences as `[-removed-]` and `{+added+}`.
+If no `<filenames>` are provided the command will show changes for all files. By default it shows the lines that changed, with the `--word-diff` option it highlights the words differences as `[-removed-]` and `{+added+}`.
 
 - `<CommitID>` vs Working Tree:
 
   ```
-  git diff [<CommitID>] [<filename>]
+  git diff [<CommitID>] [<filenames>]
   ```
 
   - If `<CommitID>` is not provided it **defaults** to the **Staging Area**.
@@ -378,15 +378,24 @@ If no `<filename>` is provided the command will show changes for all files. By d
 - `<CommitID>` vs Staging Area:
 
   ```
-  git diff --staged [<CommitID>] [<filename>]
+  git diff --staged [<CommitID>] [<filenames>]
   ```
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
+  - Compare renamed files with `git diff --staged -- <oldfilename> <newfilename>`.
 
 - `<CommitID1>` vs `<CommitID2>`:
 
   ```
-  git diff <CommitID1>..<CommitID2> [<filename>]
+  git diff <CommitID1>..<CommitID2> [<filenames>]
+  ```
+
+  - Compare renamed files with `git diff <CommitID1>..<CommitID2> -- <oldfilename> <newfilename>`.
+
+- Compare files outside Git, or two Working Tree files:
+  
+  ```
+  git diff --no-index <filename1> <filename2>
   ```
 
 Hint: exit the pager by pressing the `q` key.
