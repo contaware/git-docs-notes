@@ -328,10 +328,10 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
 ### Log
 
-- Show commits from `HEAD` following the parents; limit to `<filename>` if provided:
+- Show commits from `HEAD` following the parents; limit to `<filenames>` if provided:
 
   ```
-  git log [<filename>]
+  git log [<filenames>]
   ```
 
   - `-n` shows the last n commits.
@@ -339,7 +339,9 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - `-S "code"` shows commits in which the number of `code` occurrences changed.
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
+  - `--name-status` shows names and status of changed files.
   - `--follow` shows the history across renames (single file only).
+  - `-p` produces patch text.
   - To filter by date many documents show examples without a time, like `--after="2023-12-20"`, but then the time **defaults to the time when you run the command**. To avoid confusion also provide the time using the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:  
   `--after="2023-12-20T10:30:00+01:00"`  
   `--before="2023-12-20T17:30:00+01:00"`
