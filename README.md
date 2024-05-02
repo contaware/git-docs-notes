@@ -177,6 +177,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
      git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
      ```
 
+
 ### Management
 
 - There are multiple places to store the configurations. In order of precedence, from **highest to lowest**, we have:
