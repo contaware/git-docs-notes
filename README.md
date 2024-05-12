@@ -418,7 +418,7 @@ Hint: exit the pager by pressing the `q` key.
 - Stage for move and move in Working Tree (can be undo):
 
   ```
-  git mv <file1> <file2> <dir1> <dir2> <existing_dir>
+  git mv <filename1> <filename2> <dirname1> <dirname2> <existing_dir>
   ```
 
   - The given files and directories will be moved into `<existing_dir>`.
@@ -435,8 +435,11 @@ Manually:
 - Stage for removal and delete from Working Tree (can be undo):
 
   ```
-  git rm <filename>
+  git rm <filename1> <filename2>
+  git rm -r <filename1> <filename2> <dirname1> <dirname2>
   ```
+
+  - With the `-r` option we can remove all known files in given directories, and recursively in all sub-directories.
 
 - Remove files not under version control:
 
