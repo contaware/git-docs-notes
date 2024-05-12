@@ -249,15 +249,15 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
 
 ### Add files
 
-In a Working Tree there are two kinds of files, the **tracked** files which Git knows and the **untracked** files that Git does not know.
+In a Working Tree there are two kinds of files, the **tracked** files which Git knows and the **untracked** files that Git does not know. The `git add` command adds the given files to the **Staging Area**.
 
-- Add given file(s) to the Staging Area:
+- Add given files and all files in given directories, and recursively in all sub-directories:
 
   ```
-  git add <filename1> <filename2>
+  git add <filename1> <filename2> <dirname1> <dirname2>
   ```
 
-- Add files in current directory and in all subdirectories (.gitignore is honored):
+- Add files in current directory, and recursively in all sub-directories:
 
   ```
   git add .
