@@ -25,7 +25,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Commit](#commit)
   - [Log](#log)
   - [Diff](#diff)
-  - [Rename files/directories](#rename-filesdirectories)
+  - [Rename/move files/directories](#renamemove-filesdirectories)
   - [Remove files](#remove-files)
   - [Restore files](#restore-files)
   - [Branch](#branch)
@@ -404,19 +404,30 @@ If no `<filenames>` are provided the command will show changes for all files. By
 Hint: exit the pager by pressing the `q` key.
 
 
-### Rename files/directories
+### Rename/move files/directories
 
-Stage for rename and rename in Working Tree (can be undo):
+- Stage for rename and rename in Working Tree (can be undo):
 
-```
-git mv <oldname> <newname>
-```
+  ```
+  git mv <oldname> <newname>
+  ```
 
-Manual rename:
+  - `<oldname>` can be a file or a directory.
+  - `<newname>` must be non-existing.
 
-- Git will detect manually renamed files/directories as soon as you stage with the `git add .` command.
-- Renamed files with modified content will also be detected if they do not differ too much. If the detection does not work, split the modifications and the renames into two commits.
-- File history is preserved when Git detects the renames.
+- Stage for move and move in Working Tree (can be undo):
+
+  ```
+  git mv <file1> <file2> <dir1> <dir2> <existing_dir>
+  ```
+
+  - The given files and directories will be moved into `<existing_dir>`.
+
+Manually:
+
+1. Git will detect manually renamed/moved files/directories as soon as you stage with the `git add .` command.
+2. Renamed/moved files with modified content will also be detected if they do not differ too much. If the detection does not work, split the modifications and the renames/moves into two commits.
+3. File history is preserved when Git detects the renames/moves.
 
 
 ### Remove files
