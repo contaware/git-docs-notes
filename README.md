@@ -251,13 +251,13 @@ Git keeps all of its files in the `.git` directory. Just delete that directory.
 
 In a Working Tree there are two kinds of files, the **tracked** files which Git knows and the **untracked** files that Git does not know. The `git add` command adds the given files to the **Staging Area**.
 
-- Add given files and all files in given directories, and recursively in all sub-directories:
+- Stage given files and all files in given directories, and recursively in all sub-directories:
 
   ```
   git add <filename1> <filename2> <dirname1> <dirname2>
   ```
 
-- Add files in current directory, and recursively in all sub-directories:
+- Stage files in current directory, and recursively in all sub-directories:
 
   ```
   git add .
@@ -266,13 +266,13 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
   - Use `-n` to just show what would be added, handy to test `.gitignore`.
   - Avoid `git add *` because `.gitignore` is not taken into account and files beginning with a dot are not added.
 
-- Add all tracked files that have been modified or deleted:
+- Stage all tracked files that have been modified or deleted:
 
   ```
   git add -u
   ```
 
-- Interactive add by hunks (=area where the file changed):
+- Interactive stage by hunks (=area where the file changed):
 
   ```
   git add -p <filename>
