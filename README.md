@@ -355,6 +355,14 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
 
+- Show `<filename>` at given `<CommitID>`:
+
+  ```
+  git show <CommitID>:<filename>
+  ```
+
+  - To save it: `git show <CommitID>:<filename> > <savename>`.
+
 - Show `<filename>` with the commits that last changed each line:
 
   ```
