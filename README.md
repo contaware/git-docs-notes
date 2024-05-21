@@ -311,7 +311,7 @@ Note: if any of the ignored files were already being tracked, Git would continue
   ```
   git commit
   ```
-  - Git launches the [configured](#config) editor to write your message. A good commit message has a subject line with the first letter capitalized and not ending with a period. If a description is needed, separate it from the subject with a blank line and wrap it at 72 characters.
+  - Git launches the [configured](#config) editor to write your message. A good commit message has a subject line with the first letter capitalized and not ending with a period. Use the imperative mood in the subject line. If a description is needed, separate it from the subject with a blank line and wrap it at 72 characters.
   - To quickly add a message use the `-m "msg"` option.
 
 - Stage and commit all tracked files that have been modified or deleted:
