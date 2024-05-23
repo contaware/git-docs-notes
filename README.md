@@ -149,7 +149,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
 
    - `true`:  LF to CRLF when checking out text files, when committing text files CRLF -> LF.
    - `input`: No conversion on checkout, when committing text files CRLF -> LF.
-   - `false`: No conversion.
+   - `false`: No conversion (this is the **default** value if it is not set).
 
 3. By default the branch name for new repositories is `master` (can also 
    be set by Windows installer), but `main` is getting more popular:
