@@ -282,6 +282,16 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
   git add -p <filename>
   ```
 
+- Override (add/remove) execute permissions in Staging Area (the files in Working Tree are left unchanged):
+
+  ```
+  git add --chmod=+x <filename>
+  git add --chmod=-x <filename>
+  ```
+
+  - On systems supporting execute permissions (not Windows), that's usually not necessary, because Git reads the execute permissions from the Working Tree files.
+  - Use `git ls-files --stage <filename>` to check the current permissions in Staging Area.
+
 Hint: Git tracks files, not directories. To track an empty directory (that contains no files) create an empty `.placeholder` file in it.
 
 
