@@ -325,7 +325,7 @@ Note: if any of the ignored files were already being tracked, Git would continue
   ```
   git commit
   ```
-  - Git launches the [configured](#config) editor to write your message. A good commit message has a subject line with the first letter capitalized and not ending with a period. Use the imperative mood in the subject line. If a description is needed, separate it from the subject with a blank line and wrap it at 72 characters.
+  - Git launches the [configured](#config) editor to write your message.
   - To quickly add a message use the `-m "msg"` option.
 
 - Stage and commit all tracked files that have been modified or deleted:
@@ -333,6 +333,8 @@ Note: if any of the ignored files were already being tracked, Git would continue
   ```
   git commit -a
   ```
+
+A **good commit message** has a subject line with the first letter capitalized, not ending with a period and of 50 characters or less. Use the imperative mood in the subject line. If a description is needed, separate it from the subject with a blank line and wrap it at 72 characters.
 
 After a commit has been created, it can be referenced by its hash value, and usually the first 4-6 hash characters are enough. A branch always refers to its latest commit. In a local repository `HEAD` points to the currently checked-out branch, or directly to a commit when in [detached HEAD state](#switch-to-a-commit).
 
