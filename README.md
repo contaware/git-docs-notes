@@ -257,14 +257,18 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
   git add <filename1> <filename2> <dirname1> <dirname2>
   ```
 
-- Stage files in current directory, and recursively in all sub-directories:
+  - Often used like `git add .` to stage files in current directory, and recursively in all sub-directories.
+  - Use `-n` to just show what would be staged, handy to test `.gitignore`.
+
+- Stage files by globs:
 
   ```
-  git add .
+  git add <dirname>/*.txt
+  git add <dirname>/\*.txt
   ```
 
-  - Use `-n` to just show what would be added, handy to test `.gitignore`.
-  - Avoid `git add *` because `.gitignore` is not taken into account and files beginning with a dot are not added.
+  - The first form uses **shell globs** which do stage the files inside `<dirname>` only, dot-files are NOT staged and `.gitignore` is NOT honored.
+  - The second form uses **git globs** which do stage all files under `<dirname>` recursively, dot-files are staged and `.gitignore` is honored. Note that in this case shell globbing is prevented by escaping `*` with a backslash (we can also surround it in quotes).
 
 - Stage all tracked files that have been modified or deleted:
 
