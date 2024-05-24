@@ -139,20 +139,21 @@ If it's not the first, then open the Environment Variables dialog, under System 
    git config --global user.email "email"
    ```
 
-2. Line ending conversion (can also be set by Windows installer) should be set to `false` because today all text editors on all systems understand the different line-endings and honor them:
+2. Line ending conversion:
    
    ```
-   git config --global core.autocrlf false
+   git config --global core.autocrlf <value>
    ```
 
-   If your really want to set it to something else:
+   - `true`:  **LF → CRLF** when checking out text files and **CRLF → LF** when adding text files to the Staging Area (that's the default of the Windows installer).
+   - `input`: No conversion on checkout and **CRLF → LF** when adding text files to the Staging Area.
+   - `false`: No conversion (that's the **default** value if `core.autocrlf` is not set).
 
-   - `true`:  LF to CRLF when checking out text files, when committing text files CRLF -> LF.
-   - `input`: No conversion on checkout, when committing text files CRLF -> LF.
-   - `false`: No conversion (this is the **default** value if it is not set).
+   In most situations it's best to avoid letting Git interpret your data, and thus set `core.autocrlf` to `false`; that's also the safest option, because the automatic heuristic may incorrectly detect some binary files as text files. If a team is working from Linux/macOS and Windows machines, there must be a convention to only use the LF line ending, but if the Windows users can't follow that, they must set `core.autocrlf` to `true`.
 
 3. By default the branch name for new repositories is `master` (can also 
    be set by Windows installer), but `main` is getting more popular:
+
    ```
    git config --global init.defaultBranch main
    ```
