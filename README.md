@@ -134,13 +134,14 @@ If it's not the first, then open the Environment Variables dialog, under System 
 ### Basic setup
 
 1. Set your credentials:
+
    ```
    git config --global user.name "username"
    git config --global user.email "email"
    ```
 
 2. Line ending conversion:
-   
+
    ```
    git config --global core.autocrlf <value>
    ```
@@ -151,15 +152,14 @@ If it's not the first, then open the Environment Variables dialog, under System 
 
    In most situations it's best to avoid letting Git interpret your data, and thus set `core.autocrlf` to `false`; that's also the safest option, because the automatic heuristic may incorrectly detect some binary files as text files. If a team is working from Linux/macOS and Windows machines, there must be a convention to only use the LF line ending, but if the Windows users can't follow that, they must set `core.autocrlf` to `true`.
 
-3. By default the branch name for new repositories is `master` (can also 
-   be set by Windows installer), but `main` is getting more popular:
+3. By default the branch name for new repositories is `master` (can also be set by Windows installer), but `main` is getting more popular:
 
    ```
    git config --global init.defaultBranch main
    ```
 
 4. Set a default text editor other than vim (can also be set by Windows installer):
-   
+
    - To use nano on Linux:
 
      ```
@@ -188,6 +188,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
   3. System-wide stored in `/etc/gitconfig` and selected by `--system`.
 
 - List the configurations:
+
   ```
   git config --list --show-origin
   ```
