@@ -242,6 +242,13 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
   ```
   git status --ignored
   ```
+  
+- Show the unstaged/staged files count:
+
+  ```
+  git diff --shortstat
+  git diff --staged --shortstat
+  ```
 
 
 ### Delete a repository
