@@ -357,7 +357,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
 - Show commits from `HEAD` following the parents; limit to `<filenames>` if provided:
 
   ```
-  git log [<filenames>]
+  git log [-- <filenames>]
   ```
 
   - `-n` shows the last n commits.
@@ -406,7 +406,7 @@ If no `<filenames>` are provided the command will show changes for all files. By
 - `<CommitID>` vs Working Tree:
 
   ```
-  git diff [<CommitID>] [<filenames>]
+  git diff [<CommitID>] [-- <filenames>]
   ```
 
   - If `<CommitID>` is not provided it **defaults** to the **Staging Area**.
@@ -414,7 +414,7 @@ If no `<filenames>` are provided the command will show changes for all files. By
 - `<CommitID>` vs Staging Area:
 
   ```
-  git diff --staged [<CommitID>] [<filenames>]
+  git diff --staged [<CommitID>] [-- <filenames>]
   ```
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
@@ -423,7 +423,7 @@ If no `<filenames>` are provided the command will show changes for all files. By
 - `<CommitID1>` vs `<CommitID2>`:
 
   ```
-  git diff <CommitID1>..<CommitID2> [<filenames>]
+  git diff <CommitID1>..<CommitID2> [-- <filenames>]
   ```
 
   - Compare renamed files with `git diff <CommitID1>..<CommitID2> -- <oldfilename> <newfilename>`.
