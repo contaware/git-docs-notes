@@ -47,6 +47,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Rebase](#rebase)
   - [Reset](#reset)
   - [Push (force)](#push-force)
+  - [Remove files completely](#remove-files-completely)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Make a Pull-request (PR)](#make-a-pull-request-pr)
@@ -997,6 +998,52 @@ git push --force-with-lease <remotename> <localbranchname>
 ```
 
 - The `--force-with-lease` option will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them. In other words, you can push your changes as long as no one else has pushed any updates to the remote repository since your last fetch.
+
+
+### Remove files completely
+
+There may be situations in which you want to purge the repository history from a file because it contains sensitive data or simply because it is too big.
+
+If it's the last commit, just [amend](#amend) it. If it's not the last commit and you are comfortable with the [rebase](#rebase) command, you may try an interactive rebase dropping the commit that introduced the file. Fortunately there is a utility which works also in complicated situations, to use it, first [install git-filter-repo](https://github.com/newren/git-filter-repo/blob/main/INSTALL.md) with your favorite package manager or do a manual install like:
+
+1. Download the [git-filter-repo](https://github.com/newren/git-filter-repo/blob/main/git-filter-repo) python script making sure it has no extension.
+   
+2. If your python3 executable is named `python` instead of `python3`, modify the shebang inside the downloaded script file.
+   
+3. Move the script file to the directory shown by the `git --exec-path` command. 
+
+As `git filter-repo` irreversibly rewrites your history, either do a fresh clone of your repository or execute it with the `--force` option being aware that you must have a backup copy of your repository. Note that `git filter-repo` works by including the paths specified, but usually you want the inverse behavior, you want it to discard the specified paths, that's achieved by providing the `--invert-paths` option shown next. There are many more options, [see them here](https://www.mankier.com/1/git-filter-repo).
+   
+1. Remove the specified **file/directory** from all commits in all branches:
+
+   ```
+   git filter-repo --invert-paths --path <path>
+   ```
+
+   - `<path>` must be relative to the repository root.
+
+   - Multiple paths can be specified by using multiple `--path` options.
+  
+   - If a path used to exist at any other location (because it was moved or renamed), you must run this command on those paths, as well.
+   
+2. Test that the files have indeed been removed from the history:
+
+   ```
+   git log --follow --name-status -- <filenames>
+   ```
+   
+3. For safety the configured remotes are removed, restore them:
+
+   ```
+   git remote add origin https://github.com/username/repo.git
+   ```
+
+4. Because the history has been re-written, we have to force the push:
+
+   ```
+   git push origin --force --all
+   git push origin --force --tags
+   ```
 
 
 ## Work with GitHub
