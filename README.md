@@ -134,11 +134,11 @@ If it's not the first, then open the Environment Variables dialog, under System 
 
 ### Basic setup
 
-1. Set your credentials:
+1. Set your identity:
 
    ```
-   git config --global user.name "username"
-   git config --global user.email "email"
+   git config --global user.name "FirstName LastName"
+   git config --global user.email "email@example.com"
    ```
 
 2. Line ending conversion:
