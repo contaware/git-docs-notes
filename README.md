@@ -137,14 +137,14 @@ If it's not the first, then open the Environment Variables dialog, under System 
 1. Set your identity:
 
    ```
-   git config --global user.name "FirstName LastName"
-   git config --global user.email "email@example.com"
+   git config set --global user.name "FirstName LastName"
+   git config set --global user.email "email@example.com"
    ```
 
 2. Line ending conversion:
 
    ```
-   git config --global core.autocrlf <value>
+   git config set --global core.autocrlf <value>
    ```
 
    - `true`:  **LF → CRLF** when checking out text files and **CRLF → LF** when adding text files to the Staging Area (that's the default of the Windows installer).
@@ -156,7 +156,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
 3. By default the branch name for new repositories is `master` (can also be set by Windows installer), but `main` is getting more popular:
 
    ```
-   git config --global init.defaultBranch main
+   git config set --global init.defaultBranch main
    ```
 
 4. Set a default text editor other than vim (can also be set by Windows installer):
@@ -164,48 +164,56 @@ If it's not the first, then open the Environment Variables dialog, under System 
    - To use nano on Linux:
 
      ```
-     git config --global core.editor "nano"
+     git config set --global core.editor "nano"
      ```
    
    - To use TextEdit on macOS:
    
      ```
-     git config --global core.editor "open -e -W -n"
+     git config set --global core.editor "open -e -W -n"
      ```
    
    - To use Notepad++ on Windows:
    
      ```
-     git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+     git config set --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
      ```
 
 
 ### Management
 
-- There are multiple places to store the configurations. In order of precedence, from **highest to lowest**, we have:
+There are multiple places to store the configurations. In order of precedence, from **highest to lowest**, we have:
 
-  1. Repository specific stored in `.git/config` and selected by `--local`.
-  2. User-specific stored in `~/.gitconfig` and selected by `--global`.
-  3. System-wide stored in `/etc/gitconfig` and selected by `--system`.
+1. Repository specific stored in `.git/config` and selected by `--local`.
+2. User-specific stored in `~/.gitconfig` and selected by `--global`.
+3. System-wide stored in `/etc/gitconfig` and selected by `--system`.
 
-- List the configurations:
+Configurations are organized in sections and optional subsections. The following commands use `<name>` to refer to a configuration entry. A `<name>` has the form `<section>.<key>` or `<section>.<subsection>.<key>`. A `<value>` may contain spaces, in which case it should be enclosed in double-quotes.
+
+- List all configurations:
 
   ```
-  git config --list --show-origin
+  git config list --show-origin
   ```
 
 - Read the configuration with the **highest precedence**:
 
   ```
-  git config <name>
+  git config get <name>
   ```
 
   - Use `--local`, `--global` or `--system` to only read from the respective locations. 
 
+- Read all entries for a configuration:
+
+  ```
+  git config get --show-origin --all <name>
+  ```
+
 - Write `<value>` to the **local configuration** file:
 
   ```
-  git config <name> <value>
+  git config set <name> <value>
   ```
 
   - Use `--global` or `--system` to write to the other locations.
@@ -213,7 +221,7 @@ If it's not the first, then open the Environment Variables dialog, under System 
 - Remove `<name>` from the **local configuration** file:
 
   ```
-  git config --unset <name>
+  git config unset <name>
   ```
 
   - Use `--global` or `--system` to remove from the other locations.
@@ -521,7 +529,7 @@ To better understand the following commands, it's important to remember that whe
 
 In addition to the local branches stored in your machine and the remote branches residing on a remote server, there is also the concept of a **remote-tracking branch**. This type of branches are locally stored references pointing to remote branches. They are named like `<remotename>/<remotebranchname>` and can be listed with `git branch -r`.
 
-The explicit association between a remote branch and a local branch is not mandatory, but comfortable when synchronizing, it avoids us typing the full commands with all the arguments. With `git config --list` we can see those **upstream tracking configurations** for all the local branches, they are `branch.<branchname>.remote` and `branch.<branchname>.merge`.
+The explicit association between a remote branch and a local branch is not mandatory, but comfortable when synchronizing, it avoids us typing the full commands with all the arguments. With `git config list` we can see those **upstream tracking configurations** for all the local branches, they are `branch.<branchname>.remote` and `branch.<branchname>.merge`.
 
 - List:
 
