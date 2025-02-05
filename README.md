@@ -188,7 +188,7 @@ There are multiple places to store the configurations. In order of precedence, f
 2. User-specific stored in `~/.gitconfig` and selected by `--global`.
 3. System-wide stored in `/etc/gitconfig` and selected by `--system`.
 
-Configurations are organized in sections and optional subsections. The following commands use `<name>` to refer to a configuration entry. A `<name>` has the form `<section>.<key>` or `<section>.<subsection>.<key>`. A `<value>` may contain spaces, in which case it should be enclosed in double-quotes.
+Configurations are organized in sections and subsections. The following commands use `<name>` to refer to a configuration entry. A `<name>` has the form `<section>.<key>` or `<section>.<subsection>.<key>`. A `<value>` may contain spaces, in which case it should be enclosed in double-quotes.
 
 - List all configurations:
 
@@ -225,6 +225,16 @@ Configurations are organized in sections and optional subsections. The following
   ```
 
   - Use `--global` or `--system` to remove from the other locations.
+
+- Remove a section or a subsection from the **local configuration** file:
+
+  ```
+  git config remove-section <section>
+  git config remove-section <section>.<subsection>
+  ```
+
+  - Use `--global` or `--system` to remove from the other locations.
+  - The removal of a section will not result in the removal of its subsections.
 
 
 ## Use
