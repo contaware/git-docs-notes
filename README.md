@@ -194,6 +194,7 @@ Configurations are organized in sections and subsections. The following commands
 
   ```
   git config list --show-origin
+  git config list --show-scope
   ```
 
 - Read the configuration with the **highest precedence**:
@@ -207,7 +208,7 @@ Configurations are organized in sections and subsections. The following commands
 - Read all entries for a configuration:
 
   ```
-  git config get --show-origin --all <name>
+  git config get --show-scope --all <name>
   ```
 
 - Write `<value>` to the **local configuration** file:
