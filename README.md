@@ -380,6 +380,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   git log [-- <filenames>]
   ```
 
+  - In `<filenames>` it's possible to use globs, more details about them under [Add files](#add-files). 
   - `-n` shows the last n commits.
   - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
   - `-S "code"` shows commits in which the number of `code` occurrences changed.
