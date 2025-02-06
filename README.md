@@ -293,11 +293,11 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
 
   ```
   git add <dirname>/*.txt
-  git add <dirname>/\*.txt
+  git add "<dirname>/*.txt"
   ```
 
   - The first form uses **shell globs** which do stage the files inside `<dirname>` only, dot-files are NOT staged and `.gitignore` is NOT honored.
-  - The second form uses **git globs** which do stage all files under `<dirname>` recursively, dot-files are staged and `.gitignore` is honored. Note that in this case shell globbing is prevented by escaping `*` with a backslash (we can also surround it in quotes).
+  - The double-quotes in the second form do prevent shell globbing and thus **let git do the globbing**. This means that all files under `<dirname>` are staged recursively, dot-files are also staged and `.gitignore` is honored. Note: the Windows Command Prompt does not know shell globbing, for that terminal git will always perform the globbing.
 
 - Stage all tracked files that have been modified or deleted:
 
