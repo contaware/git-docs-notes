@@ -383,9 +383,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - `<revision-range>` defaults to `HEAD`. It's possible to provide `<CommitID1>..<CommitID2>` which includes commits reachable from `<CommitID2>` but not from `<CommitID1>`.
   - In `<filenames>` it's possible to use globs, more details about them under [Add files](#add-files). When `<filenames>` is a single file, use `--follow` to show the history across renames.
   - `-<count>` limits the shown commits to the given count.
-  - `--reverse` displays in reverse order (applied after commits count limitation).
-  - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
-  - `-S "code"` shows commits in which the number of `code` occurrences changed.
+  - `--reverse` displays in reverse order (applied after commit limiting options).
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
   - `-p` produces patch text.
@@ -394,6 +392,8 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - To filter by date many documents show examples without a time, like `--after="2023-12-20"`, but then the time **defaults to the time when you run the command**. To avoid confusion also provide the time using the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:  
   `--after="2023-12-20T10:30:00+01:00"`  
   `--before="2023-12-20T17:30:00+01:00"`
+  - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
+  - `-S "code"` shows commits in which the number of `code` occurrences changed.
 
 - Show information about the given `<CommitID>`:
 
