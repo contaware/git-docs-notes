@@ -374,19 +374,20 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
 ### Log
 
-- Show commits from `HEAD` following the parents; limit to `<filenames>` if provided:
+- Show commits for given `<revision-range>` following the parents; limit to `<filenames>` if provided:
 
   ```
-  git log [-- <filenames>]
+  git log [<revision-range>] [-- <filenames>]
   ```
 
-  - In `<filenames>` it's possible to use globs, more details about them under [Add files](#add-files). 
-  - `-n` shows the last n commits.
+  - `<revision-range>` defaults to `HEAD`. It's possible to provide `<CommitID1>..<CommitID2>` which includes commits reachable from `<CommitID2>` but not from `<CommitID1>`.
+  - In `<filenames>` it's possible to use globs, more details about them under [Add files](#add-files). When `<filenames>` is a single file, use `--follow` to show the history across renames.
+  - `-<count>` limits the shown commits to the given count.
+  - `--reverse` displays in reverse order (applied after commits count limitation).
   - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
   - `-S "code"` shows commits in which the number of `code` occurrences changed.
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
-  - `--follow` shows the history across renames (single file only).
   - `-p` produces patch text.
   - `--name-status` shows names and status of changed files.
   - `--diff-filter=<filterchars>` includes by status, `<filterchars>` can be any combination of A (added), C (copied), D (deleted), M (modified), R (renamed). Use lower-case letters to exclude.
