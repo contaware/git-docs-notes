@@ -1038,7 +1038,7 @@ However, there is also a utility designed specifically for this purpose and whic
 
 As `git filter-repo` irreversibly rewrites your history, either do a fresh clone of your repository or use the `--force` option being aware that you must have a backup copy of your repository. As a precaution, the configured remotes are removed when executing `git filter-repo`, reason more to have a backup from which you can restore the `.git/config` file containing your remotes. The `git filter-repo` command works by including the paths specified, but usually you want the inverse behavior, you want it to discard the specified paths, that's achieved by providing the `--invert-paths` option. There are many more options, [see them here](https://www.mankier.com/1/git-filter-repo).
    
-1. Generate reports under `.git/filter-repo/analysis` to find big files, deleted files are renames:
+1. Generate reports under `.git/filter-repo/analysis` to find big files, deleted files or renames:
 
    ```
    git filter-repo --analyze
