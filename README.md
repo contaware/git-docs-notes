@@ -1026,7 +1026,9 @@ git push --force-with-lease <remotename> <localbranchname>
 
 There may be situations in which you want to purge the repository history from a file because it contains sensitive data or simply because it is too big.
 
-If it's the last commit, just [amend](#amend) it. If it's not the last commit and you are comfortable with the [rebase](#rebase) command, you may try an interactive rebase dropping the commit that introduced the file. Fortunately there is a utility which works also in complicated situations, to use it, first [install git-filter-repo](https://github.com/newren/git-filter-repo/blob/main/INSTALL.md) with your favorite package manager or do a manual install like:
+If it's the last commit, just [amend](#amend) it. If it's not the last commit and you are comfortable with the [rebase](#rebase) command, you may try an interactive rebase dropping the commit that introduced the file.
+
+However, there is also a utility designed specifically for this purpose and which can be employed in any situation. To use it, first [install git-filter-repo](https://github.com/newren/git-filter-repo/blob/main/INSTALL.md) with your favorite package manager or do a manual install like:
 
 1. Download the [git-filter-repo](https://github.com/newren/git-filter-repo/blob/main/git-filter-repo) python script making sure it has no extension.
    
@@ -1034,33 +1036,53 @@ If it's the last commit, just [amend](#amend) it. If it's not the last commit an
    
 3. Move the script file to the directory shown by the `git --exec-path` command. 
 
-As `git filter-repo` irreversibly rewrites your history, either do a fresh clone of your repository or execute it with the `--force` option being aware that you must have a backup copy of your repository. Note that `git filter-repo` works by including the paths specified, but usually you want the inverse behavior, you want it to discard the specified paths, that's achieved by providing the `--invert-paths` option shown next. There are many more options, [see them here](https://www.mankier.com/1/git-filter-repo).
+As `git filter-repo` irreversibly rewrites your history, either do a fresh clone of your repository or use the `--force` option being aware that you must have a backup copy of your repository. As a precaution, the configured remotes are removed when executing `git filter-repo`, reason more to have a backup from which you can restore the `.git/config` file containing your remotes. The `git filter-repo` command works by including the paths specified, but usually you want the inverse behavior, you want it to discard the specified paths, that's achieved by providing the `--invert-paths` option. There are many more options, [see them here](https://www.mankier.com/1/git-filter-repo).
    
-1. Remove the specified **file/directory** from all commits in all branches:
+1. Generate reports under `.git/filter-repo/analysis` to find big files, deleted files are renames:
 
    ```
-   git filter-repo --invert-paths --path <path>
+   git filter-repo --analyze
    ```
 
-   - `<path>` must be relative to the repository root.
+2. Remove the specified **files/directories** from all commits in all branches:
 
-   - Multiple paths can be specified by using multiple `--path` options.
-  
-   - If a path used to exist at any other location (because it was moved or renamed), you must run this command on those paths, as well.
+   ```
+   git filter-repo --invert-paths --path <path1> --path-glob "<path2>"
+   git filter-repo --invert-paths --use-base-name --path <basename1> --path-glob "<basename2>"
+   ```
+
+   - Without `--use-base-name` the given paths are **relative to the repository root**. A provided path ending with a slash, only matches directories, while one without ending slash, matches both files and directories.
    
-2. Test that the files have indeed been removed from the history:
+   - With `--use-base-name` all provided basenames are matched to the **basename of the files, directories are NOT matched**.
+
+   - `--path` requires an **exact** match.
+
+   - `--path-glob` supports glob characters. Remember the quotes around the given path to prevent shell globbing. The `*` glob character works **across multiple directories**.
+   
+   - **Renames are NOT followed**, you may need to specify multiple path options or use globs.
+
+   - To test your command, first run `git filter-repo --invert-paths --dry-run` and save `.git/filter-repo/fast-export.filtered`. Next run the command you wish to test with `--dry-run` and diff the two filtered versions. Do not compare to `.git/filter-repo/fast-export.original` because that shows many irrelevant differences.
+   
+   Examples:
 
    ```
-   git log --follow --name-status -- <filenames>
+   git filter-repo --invert-paths --path app.exe --path-glob "src/*/data"
+   git filter-repo --invert-paths --path ".DS_Store" --path-glob "*/.DS_Store"
+   git filter-repo --invert-paths --use-base-name --path ".DS_Store"
+   git filter-repo --invert-paths --use-base-name --path-glob "*.zip"
    ```
    
-3. For safety the configured remotes are removed, restore them:
+3. With `git log` make sure there is no trace left of your deleted file(s).
+   
+4. Restore `.git/config` or re-create the remotes:
 
    ```
    git remote add origin https://github.com/username/repo.git
    ```
 
-4. Because the history has been re-written, we have to force the push:
+5. Optionally delete the `.git/filter-repo` directory (if present).
+
+6. As the history has been re-written, force the push:
 
    ```
    git push origin --force --all
