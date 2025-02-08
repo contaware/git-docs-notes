@@ -387,8 +387,8 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - `--oneline` displays in one-liners.
   - `--graph` displays a text-based graph in topological order.
   - `-p` produces patch text.
-  - `--name-status` shows names and status of changed files.
-  - `--diff-filter=<filterchars>` includes by status, `<filterchars>` can be any combination of A (added), C (copied), D (deleted), M (modified), R (renamed). Use lower-case letters to exclude.
+  - `--name-status` shows names and status of changed files. The status letter `R` is followed by a score which denotes the percentage of similarity between source and target.
+  - `--diff-filter=<filterchars>` includes by status, `<filterchars>` can be any combination of A (added), D (deleted), M (modified), R (renamed). Use lower-case letters to exclude.
   - To filter by date many documents show examples without a time, like `--after="2023-12-20"`, but then the time **defaults to the time when you run the command**. To avoid confusion also provide the time using the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:  
   `--after="2023-12-20T10:30:00+01:00"`  
   `--before="2023-12-20T17:30:00+01:00"`
