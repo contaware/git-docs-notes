@@ -419,7 +419,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
 
   - Use `-L <start>[,<end>]` to limit the lines range (one-based indexes).
   
-Hint: exit the pager by pressing the `q` key.
+Hint: exit the pager by pressing the `q` key. To search type `/<text>`, press `n` for the next occurrence and `N` for the previous one.
 
 
 ### Diff
@@ -457,7 +457,7 @@ If no `<filenames>` are provided the command will show changes for all files. By
   git diff --no-index <filename1> <filename2>
   ```
 
-Hint: exit the pager by pressing the `q` key.
+Hint: exit the pager by pressing the `q` key. To search type `/<text>`, press `n` for the next occurrence and `N` for the previous one.
 
 
 ### Rename/move files/directories
