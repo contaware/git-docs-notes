@@ -197,19 +197,22 @@ Configurations are organized in sections and subsections. The following commands
   git config list --show-scope
   ```
 
-- Read the configuration with the **highest precedence**:
+- Read a single value:
 
   ```
   git config get <name>
   ```
 
-  - Use `--local`, `--global` or `--system` to only read from the respective locations. 
+  - It returns the value with the **highest precedence**, unless `--local`, `--global` or `--system` is specified.
 
-- Read all entries for a configuration:
+- Read multiple values:
 
   ```
-  git config get --show-scope --all <name>
+  git config get --all --show-scope <name>
   ```
+
+  - It returns the values from **all configuration** files, unless `--local`, `--global` or `--system` is specified.
+  - If `<name>` is multi-valued, all its values are returned.
 
 - Write `<value>` to the **local configuration** file:
 
@@ -218,6 +221,7 @@ Configurations are organized in sections and subsections. The following commands
   ```
 
   - Use `--global` or `--system` to write to the other locations.
+  - Use `--append` to add another `<value>` with the same `<name>`. 
 
 - Remove `<name>` from the **local configuration** file:
 
@@ -226,6 +230,7 @@ Configurations are organized in sections and subsections. The following commands
   ```
 
   - Use `--global` or `--system` to remove from the other locations.
+  - Must use `--all` if `<name>` is multi-valued.
 
 - Remove a section or a subsection from the **local configuration** file:
 
