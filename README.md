@@ -452,10 +452,10 @@ If no `<filenames>` are provided the command will show changes for all files. By
 - `<CommitID1>` vs `<CommitID2>`:
 
   ```
-  git diff <CommitID1>..<CommitID2> [-- <filenames>]
+  git diff <CommitID1> <CommitID2> [-- <filenames>]
   ```
 
-  - Compare renamed files with `git diff <CommitID1>..<CommitID2> -- <oldfilename> <newfilename>`.
+  - Compare renamed files with `git diff <CommitID1> <CommitID2> -- <oldfilename> <newfilename>`.
 
 - Compare files outside Git, or two Working Tree files:
   
