@@ -407,6 +407,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   ```
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
+  - `--name-status` shows names and status of changed files and prevents diff output.
 
 - Show `<filename>` at given `<CommitID>`:
 
