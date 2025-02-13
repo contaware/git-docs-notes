@@ -262,11 +262,8 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
   git status
   ```
 
-- To view ignored files:
-
-  ```
-  git status --ignored
-  ```
+  - `--untracked-files` shows the individual untracked files instead of the untracked directory.
+  - `--ignored` shows also [ignored files](#ignore-files).
   
 - Show the unstaged/staged files count:
 
@@ -519,7 +516,7 @@ Manually:
 
   - `-f` force option is usually needed.
   - `-n` for a dry-run, it shows what would be removed.
-  - `-x` removes also the ignored files.
+  - `-x` removes also the [ignored files](#ignore-files).
 
 
 ### Restore files
