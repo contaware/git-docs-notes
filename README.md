@@ -263,7 +263,7 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
   ```
 
   - `--untracked-files` shows the individual untracked files instead of the untracked directory.
-  - `--ignored` shows also [ignored files](#ignore-files).
+  - `--ignored=matching` shows also [ignored files and ignored directories](#ignore-files).
   
 - Show the unstaged/staged files count:
 
