@@ -473,7 +473,7 @@ Hint: exit the pager by pressing the `q` key. To search type `/<text>`, press `n
 
 ### Rename/move files/directories
 
-- Stage for rename and rename in Working Tree (can be undo):
+- Stage for rename and rename also in Working Tree (can be undo):
 
   ```
   git mv <oldname> <newname>
@@ -482,7 +482,7 @@ Hint: exit the pager by pressing the `q` key. To search type `/<text>`, press `n
   - `<oldname>` can be a file or a directory.
   - `<newname>` must be non-existing.
 
-- Stage for move and move in Working Tree (can be undo):
+- Stage for move and move also in Working Tree (can be undo):
 
   ```
   git mv <filename1> <filename2> <dirname1> <dirname2> <existing_dir>
@@ -490,7 +490,7 @@ Hint: exit the pager by pressing the `q` key. To search type `/<text>`, press `n
 
   - The given files and directories will be moved into `<existing_dir>`.
 
-Manually:
+In Git, renames are not recorded into the VCS, they are recorded as deletion and addition. The diff algorithm will compare the content of the files and detect a rename:
 
 1. Git will detect manually renamed/moved files/directories as soon as you stage with the `git add .` command.
 2. Renamed/moved files with modified content will also be detected if they do not differ too much. If the detection does not work, split the modifications and the renames/moves into two commits.
