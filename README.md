@@ -400,6 +400,14 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - `-i --grep="pattern"` shows commits with commit message case-insensitive matching `pattern`.
   - `-S "code"` shows commits in which the number of `code` occurrences changed.
 
+- Summarize git log output:
+
+  ```
+  git shortlog [<revision-range>] [-- <filenames>]
+  ```
+
+  - `-s` suppresses commit description and provides a commit count summary only.
+
 - Show information about the given `<CommitID>`:
 
   ```
