@@ -299,7 +299,8 @@ In a Working Tree there are two kinds of files, the **tracked** files which Git 
   ```
 
   - The first form uses **shell globs** which do stage the files inside `<dirname>` only, dot-files are NOT staged and `.gitignore` is NOT honored.
-  - The double-quotes in the second form do prevent shell globbing and thus **let git do the globbing**. This means that all files under `<dirname>` are staged recursively, dot-files are also staged and `.gitignore` is honored. Note: the Windows Command Prompt does not know shell globbing, for that terminal git will always perform the globbing.
+  - The double-quotes in the second form do prevent shell globbing and thus **let git do the globbing**. This means that all files under `<dirname>` are staged recursively, dot-files are also staged and `.gitignore` is honored. The `*` and `?` glob characters **can match directory separators**, see [here](https://git-scm.com/docs/gitglossary.html#def_pathspec).  
+    Note: the Windows Command Prompt does not know shell globbing, for that terminal git will always perform the globbing.
 
 - Stage all tracked files that have been modified or deleted:
 
