@@ -340,7 +340,7 @@ data/binary/
 
 - A line starting with `#` serves as a **comment**.
 - The slash `/` is used as the directory separator.
-- An asterisk `*` matches **anything** except a slash. The character `?` matches any **one character** except a slash.
+- A single asterisk `*` matches **anything except a slash**. The character `?` matches any **one character except a slash**. A double asterisk `**` matches **anything, also slashes**. `[aA]` matches 1 character from the list and `[0-9]` matches 1 character from the range.
 - If there is a slash `/` at the **end**, then the pattern will only match directories.
 - If there is a slash `/` at the **beginning** or **middle** (or both), then the pattern is relative to the location of the `.gitignore` file. Otherwise the pattern matches at any level.  
   Examples:
