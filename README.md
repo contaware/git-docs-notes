@@ -387,7 +387,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - In `<filenames>` it's possible to use globs, more details about them under [Add files](#add-files). When `<filenames>` is a single file, use `--follow` to show the history across renames.
   - `-<count>` limits the shown commits to the given count.
   - `--reverse` displays in reverse order (applied after commit limiting options).
-  - `--oneline` displays in one-liners.
+  - `--oneline` displays in one-liners. Custom one-liner with date/time: `--pretty="format:%h (%ai) %s"`.
   - `--graph` displays a text-based graph in topological order.
   - `-p` produces patch text.
   - `--name-status` shows names and status of changed files. The status letter `R` is followed by a score which denotes the percentage of similarity between source and target.
