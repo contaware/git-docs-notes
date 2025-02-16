@@ -1077,7 +1077,8 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
    
    - **Renames are NOT followed**, you may need to specify multiple path options or use globs.
    
-   - `--paths-from-file <file-with-paths>` to provide the paths in a file one per line. Attention: enter your paths without leading/trailing spaces.
+   - `--paths-from-file <file-with-paths>` to provide the paths in a file one per line.  
+     Attention: enter your paths without leading/trailing spaces.
 
    - To test your command, first run `git filter-repo --invert-paths --dry-run` and save `.git/filter-repo/fast-export.filtered`. Next run the command you wish to test with `--dry-run` and diff the two filtered versions. Do not compare to `.git/filter-repo/fast-export.original` because that shows many irrelevant differences.
    
