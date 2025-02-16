@@ -1050,11 +1050,15 @@ However, there is also a utility designed specifically for this purpose and whic
 
 As `git filter-repo` irreversibly rewrites your history, either do a fresh clone of your repository or use the `--force` option being aware that you must have a backup copy of your repository. As a precaution, the configured remotes are removed when executing `git filter-repo`, reason more to have a backup from which you can restore the `.git/config` file containing your remotes. The `git filter-repo` command works by including the paths specified, but usually you want the inverse behavior, you want it to discard the specified paths, that's achieved by providing the `--invert-paths` option. There are many more options, [see them here](https://www.mankier.com/1/git-filter-repo).
    
-1. Generate reports under `.git/filter-repo/analysis` to find big files, deleted files or renames:
+1. Generate reports under `.git/filter-repo/analysis` to find big files or deleted files:
 
    ```
    git filter-repo --analyze
    ```
+
+   - `path-all-sizes.txt` lists all files by size.
+   - `path-deleted-sizes.txt` lists all files that were committed at some point, and were later deleted, but still exist in the git history.  
+     Warning: renames in git are stored as deletion + addition, and diff detects the rename. If diff does not detect a rename, then the old filename will be listed in `path-deleted-sizes.txt`.
 
 2. Remove the specified **files/directories** from all commits in all branches:
 
