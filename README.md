@@ -1068,18 +1068,12 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
    ```
 
    - Without `--use-base-name` the given paths are **relative to the repository root**. A provided path ending with a slash, only matches directories, while one without ending slash, matches both files and directories.
-   
    - With `--use-base-name` all provided basenames are matched to the **basename of the files, directories are NOT matched**.
-
    - `--path` requires an **exact** match.
-
    - `--path-glob` supports glob characters. Remember the quotes around the given path to prevent shell globbing. The `*` glob character works **across multiple directories**.
-   
    - **Renames are NOT followed**, you may need to specify multiple path options or use globs.
-   
    - `--paths-from-file <file-with-paths>` to provide the paths in a file one per line.  
      Attention: enter your paths without leading/trailing spaces.
-
    - To test your command, first run `git filter-repo --invert-paths --dry-run` and save `.git/filter-repo/fast-export.filtered`. Next run the command you wish to test with `--dry-run` and diff the two filtered versions. Do not compare to `.git/filter-repo/fast-export.original` because that shows many irrelevant differences.
    
    Examples:
