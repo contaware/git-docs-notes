@@ -46,8 +46,8 @@ This document is a reference guide for the common Git commands run from a termin
   - [Amend](#amend)
   - [Rebase](#rebase)
   - [Reset](#reset)
-  - [Push (force)](#push-force)
   - [Remove files completely](#remove-files-completely)
+  - [Push (force)](#push-force)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
   - [Make a Pull-request (PR)](#make-a-pull-request-pr)
@@ -1023,17 +1023,6 @@ With the reset command we can drop commits or fix operations gone wrong like a r
   - With the `--hard` option also the Working Tree is reset to match the state of the given commit (uncommitted changes are overwritten).
 
 
-### Push (force)
-
-The push command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. So it's normal that a push attempt will fail after one of the operations from this section. Your Git GUI Client may suggest to perform a **Sync or Pull, do not do that!** If you really want to update your remote repository, despite the warning from the beginning of this section, you need to force the push like:
-
-```
-git push --force-with-lease <remotename> <localbranchname>
-```
-
-- The `--force-with-lease` option will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them. In other words, you can push your changes as long as no one else has pushed any updates to the remote repository since your last fetch.
-
-
 ### Remove files completely
 
 There may be situations in which you want to purge the repository history from a file because it contains sensitive data or simply because it is too big.
@@ -1101,6 +1090,17 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
    git push origin --force --all
    git push origin --force --tags
    ```
+
+
+### Push (force)
+
+The push command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. So it's normal that a push attempt will fail after one of the operations from this section. Your Git GUI Client may suggest to perform a **Sync or Pull, do not do that!** If you really want to update your remote repository, despite the warning from the beginning of this section, you need to force the push like:
+
+```
+git push --force-with-lease <remotename> <localbranchname>
+```
+
+- The `--force-with-lease` option will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them. In other words, you can push your changes as long as no one else has pushed any updates to the remote repository since your last fetch.
 
 
 ## Work with GitHub
