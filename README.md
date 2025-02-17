@@ -1087,8 +1087,8 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
 6. As the history has been re-written, force the push:
 
    ```
-   git push origin --force --all
-   git push origin --force --tags
+   git push --force origin --all
+   git push --force origin --tags
    ```
 
 
