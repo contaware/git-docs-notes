@@ -748,7 +748,7 @@ If someone else pushes its code and then you try to push as well, your push will
   
   - The local branch is pushed to the remote branch having the same name.
   - If the local repository was not created by a `git clone` and the local branch has never been pushed, then with your first push provide the `-u` option to set the [upstream tracking configurations](#branch).
-  - When omitting `<localbranchname>`, then the current branch is pushed to the remote branch with the same name, but only if the [upstream tracking configurations](#branch) have the same two names set.
+  - When omitting `<localbranchname>`, then the current branch is pushed to the remote branch with the same name, but only if the [upstream tracking configurations](#branch) have the same two names set. To push all branches, instead of `<localbranchname>`, provide the `--all` option.
   - If `<remotename>` is not provided, then Git pushes to the remote from the [upstream tracking configurations](#branch).
 
 - Tags have to be pushed explicitly (as opposed to pull and fetch which get them automatically):
