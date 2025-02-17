@@ -347,7 +347,7 @@ data/binary/
   1. `obj/` matches at any level, while `/obj/` only matches relative to `.gitignore` location.
   2. `data/binary/` and `/data/binary/` both only match relative to `.gitignore` location.
 
-Note: if any of the ignored files were already being tracked, Git would continue to track them.
+Note: if any of the ignored files were already being tracked, Git would continue to track them. If an ignored file is added with the `--force` option and then committed, Git will track it.
 
 
 ### Commit
