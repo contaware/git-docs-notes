@@ -1082,7 +1082,7 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
    git remote add origin https://github.com/username/repo.git
    ```
 
-5. Optionally delete the `.git/filter-repo` directory (if present).
+5. Optionally delete the `.git/filter-repo` directory.
 
 6. As the history has been re-written, force the push:
 
