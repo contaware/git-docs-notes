@@ -50,6 +50,7 @@ This document is a reference guide for the common Git commands run from a termin
   - [Push (force)](#push-force)
 - [Work with GitHub](#work-with-github)
   - [Repository names](#repository-names)
+  - [Connect local repository with GitHub](#connect-local-repository-with-github)
   - [Make a Pull-request (PR)](#make-a-pull-request-pr)
   - [Merge a Pull-request (PR)](#merge-a-pull-request-pr)
   - [Update a fork](#update-a-fork)
@@ -1115,6 +1116,18 @@ git push --force-with-lease <remotename> <localbranchname>
 - If you want your GitHub repositories to be easily readable and recognizable, use hyphens instead of underscores.
 
 - Prefer all lowercase letters.
+
+
+### Connect local repository with GitHub
+
+- If you have a repository on GitHub but not locally, then just [clone](#clone) it.
+
+- If you have a local repository and want to publish it, then in GitHub create an **empty** repository, and from your local repository:
+  ```
+  git remote add origin https://github.com/username/repo.git
+  git push -u origin main
+  ```
+  Hint: if you opted to add a README, .gitignore or a license file while creating the repository in GitHub, you can throw away that by adding the `--force` option to the above `push` command.
 
 
 ### Make a Pull-request (PR)
