@@ -1072,7 +1072,7 @@ As `git filter-repo` irreversibly rewrites your history, either do a fresh clone
    git filter-repo --invert-paths --path app.exe --path-glob "src/*/data"
    git filter-repo --invert-paths --path ".DS_Store" --path-glob "*/.DS_Store"
    git filter-repo --invert-paths --use-base-name --path ".DS_Store"
-   git filter-repo --invert-paths --use-base-name --path-glob "*.zip"
+   git filter-repo --invert-paths --use-base-name --path-glob "*.o" --path-glob "*.obj"
    ```
    
 3. With `git log` make sure there is no trace left of your deleted file(s).
