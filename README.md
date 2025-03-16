@@ -566,7 +566,8 @@ The explicit association between a remote branch and a local branch is not manda
 
   - `-v` to be more verbose.
   - `-vv` really verbose, it shows upstream tracking configurations.
-  - `-r` to see the remote-tracking branches.
+  - `-r` to see the remote-tracking branches.  
+    Note: `origin/HEAD` is created by `git clone` and points to the default branch on the remote.
   - `-a` to see all branches.
 
 - Create:
