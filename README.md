@@ -257,10 +257,10 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
 
 ### Status
 
-- Show the status of the repository:
+- Show the status of the repository; limit to `<paths>` if provided:
 
   ```
-  git status
+  git status [-- <paths>]
   ```
 
   - `--untracked-files` shows the individual untracked files instead of the untracked directory.
