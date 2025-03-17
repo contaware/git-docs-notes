@@ -266,7 +266,16 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
   - `--untracked-files` shows the individual untracked files instead of the untracked directory.
   - `--ignored=matching` shows also [ignored files and ignored directories](#ignore-files).
   
-- Show the unstaged/staged files count:
+- Filter by file status:
+  
+  ```
+  git diff --name-status --diff-filter=<filterchars>
+  ```
+
+  - `<filterchars>` can be any combination of A (added), D (deleted), M (modified), R (renamed). Use lower-case letters to exclude.
+  - `--staged` shows the staged files instead of the unstaged ones.
+
+- Show the unstaged or the staged files count:
 
   ```
   git diff --shortstat
