@@ -266,7 +266,7 @@ After a `git init` both `git status` and `git branch --show-current` tell us tha
   - `--untracked-files` shows the individual untracked files instead of the untracked directory.
   - `--ignored=matching` shows also [ignored files and ignored directories](#ignore-files).
   
-- Filter by file status:
+- Show the status of the repository filtered by file status:
   
   ```
   git diff --name-status --diff-filter=<filterchars>
