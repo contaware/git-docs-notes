@@ -648,7 +648,7 @@ Tags do reference specific commits. There are annotated tags which store more in
   git tag
   ```
 
-  - The `-n` option will also print annotation messages or commit messages for lightweight tags.
+  - The `-n` option shows the annotation message if available, otherwise the commit message.
 
 - Show:
   
@@ -665,7 +665,8 @@ Tags do reference specific commits. There are annotated tags which store more in
   ```
 
   - If `<CommitID>` is not provided it **defaults** to `HEAD`.
-  - With `-a -m "msg"` we get an **annotated tag** instead of a **lightweight tag**.
+  - With `-a -m "msg"` we get an **annotated tag** instead of a **lightweight tag**.  
+    Note: it's possible to create an **annotated tag without a message** by providing `-a -m ""`.
   - The `-f` option permits **updating** and existing tag.
 
   Hint: the [Push](#push) section shows how to upload the tags to the remote repository.
