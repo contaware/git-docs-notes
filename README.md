@@ -642,13 +642,21 @@ The explicit association between a remote branch and a local branch is not manda
 
 Tags do reference specific commits. There are annotated tags which store more information, and lightweight tags meant as private local bookmarks.
 
-- List:
+- List all:
 
   ```
   git tag
   ```
 
   - The `-n` option will also print annotation messages or commit messages for lightweight tags.
+
+- Show:
+  
+  ```
+  git show -s <tagname> 
+  ```
+
+  - If it's an annotated tag, the output starts with `tag <tagname>`, otherwise with `commit <CommitID>`.
 
 - Create/update:
 
