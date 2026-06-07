@@ -398,7 +398,7 @@ After a commit has been created, it can be referenced by its hash value, and usu
   - `-<count>` limits the shown commits to the given count.
   - `--reverse` displays in reverse order (applied after commit limiting options).
   - `--oneline` displays in one-liners. Custom one-liner with date/time: `--pretty="format:%h (%ai) %s"`.
-  - `--graph` displays a text-based graph in topological order.
+  - `--graph` displays a text-based graph in topological order. For merge commits the branch merged-into is the first parent shown with a pipe character, and the branches merged-in are the other parents shown with backslashes. Use the `--first-parent` option to only show the first parent.
   - `-p` produces patch text.
   - `--name-status` shows names and status of changed files. The status letter `R` is followed by a score which denotes the percentage of similarity between source and target.
   - `--diff-filter=<filterchars>` includes by status, `<filterchars>` can be any combination of A (added), D (deleted), M (modified), R (renamed). Use lower-case letters to exclude.
